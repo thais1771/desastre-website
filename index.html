@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Desastre: AI Config Manager for Mac — Find Every AI Tool Config File</title>
+<meta name="description" content="Desastre scans your Mac and shows every AI config file — Claude Code skills, Cursor rules, MCP servers, AGENTS.md and more from 19 tools — in one native window. $1.99, no subscription.">
+<link rel="canonical" href="https://desastre.app/">
+<link rel="icon" href="assets/icon-512.png">
+<link rel="apple-touch-icon" href="assets/icon-512.png">
+<link rel="stylesheet" href="style.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Desastre">
+<meta property="og:title" content="Desastre: AI Config Manager for Mac">
+<meta property="og:description" content="Every AI tool hides config files across your Mac. Desastre scans your machine and shows all of them — Claude, Cursor, Copilot and 16 more — in one window.">
+<meta property="og:url" content="https://desastre.app/">
+<meta property="og:image" content="https://desastre.app/assets/screenshot-1.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Desastre: AI Config Manager for Mac">
+<meta name="twitter:description" content="Find every AI config file on your Mac — skills, agents, rules and MCP servers from 19 tools in one native window.">
+<meta name="twitter:image" content="https://desastre.app/assets/screenshot-1.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Desastre: AI Config Manager",
+  "operatingSystem": "macOS 26.0 or later",
+  "applicationCategory": "DeveloperApplication",
+  "description": "Desastre is a native macOS app that scans your machine and shows every AI tool configuration — skills, agents, rules, commands and MCP servers from Claude Code, Cursor, GitHub Copilot and 16 more tools — in one window.",
+  "image": "https://desastre.app/assets/icon-1024.png",
+  "screenshot": [
+    "https://desastre.app/assets/screenshot-1.png",
+    "https://desastre.app/assets/screenshot-2.png",
+    "https://desastre.app/assets/screenshot-3.png"
+  ],
+  "offers": { "@type": "Offer", "price": "1.99", "priceCurrency": "USD" },
+  "url": "https://desastre.app/",
+  "installUrl": "https://apps.apple.com/app/desastre-ai-config-manager/id6778777399",
+  "author": { "@type": "Person", "name": "Thais Rodríguez Coso" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Where does Claude Code store its settings and skills?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Claude Code keeps global config under ~/.claude/ (skills in ~/.claude/skills/, agents in ~/.claude/agents/, instructions in ~/.claude/CLAUDE.md) — but MCP servers live in ~/.claude.json, outside the .claude folder. Per-project config lives in each repo's .claude/ folder and CLAUDE.md." }
+    },
+    {
+      "@type": "Question",
+      "name": "Where does Cursor store its rules?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Global Cursor rules live in ~/.cursor/rules/ as .mdc files. Project rules live in each repo's .cursor/rules/ folder; older projects may still use a legacy .cursorrules file in the repo root. MCP servers are configured in ~/.cursor/mcp.json." }
+    },
+    {
+      "@type": "Question",
+      "name": "Where is my MCP server configuration stored?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Every tool puts MCP config somewhere different: Claude Code uses ~/.claude.json, Claude Desktop uses claude_desktop_config.json in Application Support, Cursor uses ~/.cursor/mcp.json, Codex uses TOML blocks in ~/.codex/config.toml, and Zed nests servers under a context_servers key. There is no single standard location." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is AGENTS.md?",
+      "acceptedAnswer": { "@type": "Answer", "text": "AGENTS.md is the open, Linux Foundation-backed standard file for giving AI coding agents project instructions, used in over 60,000 repositories. Codex reads it natively, and Cursor, Windsurf, Aider, Amp, Zed and many other tools support it as their project-instruction file." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is CLAUDE.md?",
+      "acceptedAnswer": { "@type": "Answer", "text": "CLAUDE.md is Claude Code's memory file: project instructions it reads automatically at the start of every session. A global one lives at ~/.claude/CLAUDE.md, and each project can have its own CLAUDE.md (plus a git-ignored CLAUDE.local.md) at the repo root." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I convert Cursor rules to Claude Code?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. A Cursor .mdc rule is Markdown with extra frontmatter (globs, alwaysApply) that Claude Code doesn't use. Desastre's Copy-to-tool feature converts the format automatically — it strips Cursor-specific frontmatter, renames the file, and writes it where the destination tool expects it, without overwriting anything." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I find every AI config file on my Mac?",
+      "acceptedAnswer": { "@type": "Answer", "text": "AI tool config hides in dot-folders (~/.claude, ~/.cursor, ~/.codex), Application Support, and inside every project you've ever opened. Desastre scans your home folder in seconds and lists every skill, agent, rule, command and MCP server from 19 tools in one window — no configuration needed." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Desastre upload my config files anywhere?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. Desastre reads your config files locally and never uploads them. It stays inside your home folder, skips system directories, requires no account, and files over 2 MB are never even loaded into memory." }
+    },
+    {
+      "@type": "Question",
+      "name": "Which AI tools does Desastre support?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Desastre discovers config from 19 tools: Claude Code, Claude Desktop, Cursor, Windsurf, Codex, GitHub Copilot, Aider, Amp, Antigravity, Gemini CLI, Augment Code, OpenCode, Continue.dev, Cline, Roo Code, Zed, Hermes, OpenClaw, and Pi." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Desastre a subscription?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. Desastre is a one-time $1.99 purchase on the Mac App Store. No subscription, no account, no sign-in." }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="wrap">
+  <nav class="nav" aria-label="Main">
+    <a class="brand" href="/"><img src="assets/icon-512.png" alt="Desastre app icon" width="36" height="36"> Desastre</a>
+    <div class="links">
+      <a href="#screenshots">Screenshots</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="#guides">Guides</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn small" href="https://apps.apple.com/app/desastre-ai-config-manager/id6778777399">Get Desastre</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero wrap" id="top">
+  <span class="eyebrow">AI config manager for Mac</span>
+  <h1>Your AI tools left config files<br>all over your Mac.<br>See every one of them.</h1>
+  <p class="sub">Desastre scans your machine and shows every skill, agent, rule, command and MCP server — from Claude Code, Cursor, GitHub Copilot and 16 more tools — in one clean, native window. No setup. Just open it.</p>
+  <div class="cta-row" id="download">
+    <a class="btn" href="https://apps.apple.com/app/desastre-ai-config-manager/id6778777399">Download on the Mac App&nbsp;Store</a>
+    <a class="btn ghost" href="#screenshots">See it in action</a>
+  </div>
+  <p class="price-note">$1.99 one-time purchase · No subscription · No account · 100% local</p>
+  <div class="hero-shot">
+    <img src="assets/screenshot-1.png" alt="Desastre main window showing 76 AI config files from 5 tools — Claude Code skills, Cursor rules and AGENTS.md files in a Finder-style inventory" width="1280" height="800" fetchpriority="high">
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section class="alt" id="tools">
+  <div class="wrap">
+    <p class="kicker">Works with your tools</p>
+    <h2>19 AI tools. One inventory.</h2>
+    <p class="lede">Every tool writes config in a different place, in a different format. Desastre knows where all of them hide — including the weird ones.</p>
+    <div class="tools-grid">
+      <span>Claude Code</span><span>Claude Desktop</span><span>Cursor</span><span>Windsurf</span><span>Codex</span><span>GitHub Copilot</span><span>Aider</span><span>Amp</span><span>Antigravity</span><span>Gemini CLI</span><span>Augment Code</span><span>OpenCode</span><span>Continue.dev</span><span>Cline</span><span>Roo Code</span><span>Zed</span><span>Hermes</span><span>OpenClaw</span><span>Pi</span>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section id="screenshots">
+  <div class="wrap">
+    <p class="kicker">Screenshots</p>
+    <h2>Finally see what your machine has been collecting</h2>
+    <div class="shots">
+      <div class="shot">
+        <div class="shot-copy">
+          <h3>Every config, one window</h3>
+          <p>Global files like <code>~/.claude/</code> and per-project files like <code>.cursor/rules/</code>, side by side. One row per skill, agent, rule and MCP server — with the project it belongs to and every tool that can read it.</p>
+        </div>
+        <img src="assets/screenshot-1.png" alt="Desastre inventory list: skills, agents, rules, commands and MCP servers across three projects, grouped by tool" width="1280" height="800" loading="lazy">
+      </div>
+      <div class="shot">
+        <div class="shot-copy">
+          <h3>Preview anything instantly</h3>
+          <p>Markdown renders with tables and code blocks. Frontmatter shows up as a clean header. JSON, TOML and YAML are syntax-highlighted. No more <code>cat ~/.claude/skills/whatever/SKILL.md</code>.</p>
+        </div>
+        <img src="assets/screenshot-2.png" alt="Desastre file preview rendering a SKILL.md with frontmatter, description and formatted Markdown body" width="1280" height="800" loading="lazy">
+      </div>
+      <div class="shot">
+        <div class="shot-copy">
+          <h3>Copy configs between tools</h3>
+          <p>Wrote a great rule for Cursor? Send it to Claude Code in one click. Desastre converts the format automatically — <code>.mdc</code> becomes <code>.md</code>, frontmatter gets adjusted — and it never overwrites anything that already exists.</p>
+        </div>
+        <img src="assets/screenshot-3.png" alt="Desastre Copy to tool sheet showing cross-tool sync targets with automatic format conversion and conflict detection" width="1280" height="800" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="alt" id="how-it-works">
+  <div class="wrap">
+    <p class="kicker">How it works</p>
+    <h2>Open it. That's the whole setup.</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Grant access once</h3>
+        <p>Pick your home folder on first launch. Desastre is sandboxed and App Store-vetted — that single grant is all it ever asks for.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>It scans everything</h3>
+        <p>Known global paths first, then a full sweep of your home folder for project-level configs — skipping <code>node_modules</code>, <code>.git</code> and other noise.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Browse, preview, copy</h3>
+        <p>Filter by tool, kind, or scope. Preview any file. Reveal it on disk, trash what's stale, or copy it to another tool with automatic format conversion.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUIDES -->
+<section id="guides">
+  <div class="wrap">
+    <p class="kicker">Guides</p>
+    <h2>Where does everything actually live?</h2>
+    <p class="lede">The reference we wish existed when we built Desastre — exact paths, formats and gotchas for every major AI coding tool.</p>
+    <div class="guides-grid">
+      <a class="guide-card" href="guides/claude-code-config-location.html">
+        <h3>Where does Claude Code store settings, skills and agents?</h3>
+        <p>The full map of ~/.claude/ — and the one important file that lives outside it.</p>
+        <span class="more">Read the guide →</span>
+      </a>
+      <a class="guide-card" href="guides/cursor-rules-location.html">
+        <h3>Where does Cursor store rules?</h3>
+        <p>.cursor/rules/ vs the legacy .cursorrules, the .mdc format, and where MCP config goes.</p>
+        <span class="more">Read the guide →</span>
+      </a>
+      <a class="guide-card" href="guides/mcp-config-locations.html">
+        <h3>Where is MCP server config stored? Every tool's path</h3>
+        <p>13 tools, 13 different files and key names. The complete MCP config location table.</p>
+        <span class="more">Read the guide →</span>
+      </a>
+      <a class="guide-card" href="guides/convert-cursor-rules-to-claude-code.html">
+        <h3>How to convert Cursor rules to Claude Code</h3>
+        <p>What changes between .mdc and CLAUDE.md-world, and how to move rules in one click.</p>
+        <span class="more">Read the guide →</span>
+      </a>
+      <a class="guide-card" href="guides/what-is-agents-md.html">
+        <h3>What is AGENTS.md?</h3>
+        <p>The open standard instruction file 60,000+ repos use — which tools read it and where it goes.</p>
+        <span class="more">Read the guide →</span>
+      </a>
+      <a class="guide-card" href="guides/what-is-claude-md.html">
+        <h3>What is CLAUDE.md?</h3>
+        <p>Claude Code's memory file: global vs project vs local, and how the layers combine.</p>
+        <span class="more">Read the guide →</span>
+      </a>
+      <a class="guide-card" href="guides/copilot-instructions-location.html">
+        <h3>Where does GitHub Copilot store custom instructions?</h3>
+        <p>copilot-instructions.md, .github/instructions/, agents and MCP — the full Copilot map.</p>
+        <span class="more">Read the guide →</span>
+      </a>
+      <a class="guide-card" href="guides/windsurf-rules-location.html">
+        <h3>Where does Windsurf store rules and config?</h3>
+        <p>Windsurf splits config across two hidden folders. Here's both halves.</p>
+        <span class="more">Read the guide →</span>
+      </a>
+      <a class="guide-card" href="guides/gemini-cli-config-location.html">
+        <h3>Where do Gemini CLI and Antigravity store config?</h3>
+        <p>GEMINI.md, ~/.gemini/, and the shared-folder conflict that can eat your instructions.</p>
+        <span class="more">Read the guide →</span>
+      </a>
+      <a class="guide-card" href="guides/find-ai-config-files-mac.html">
+        <h3>How to find every AI config file on your Mac</h3>
+        <p>Where 19 tools hide their files, how to audit them by hand — and the faster way.</p>
+        <span class="more">Read the guide →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="alt" id="faq">
+  <div class="wrap">
+    <p class="kicker">FAQ</p>
+    <h2>Questions developers ask us</h2>
+    <div class="faq">
+      <details>
+        <summary>Where does Claude Code store its settings and skills?</summary>
+        <p>Global config lives under <code>~/.claude/</code> — skills in <code>~/.claude/skills/</code>, agents in <code>~/.claude/agents/</code>, instructions in <code>~/.claude/CLAUDE.md</code>. The catch: MCP servers live in <code>~/.claude.json</code>, <em>outside</em> the folder. <a href="guides/claude-code-config-location.html">Learn more →</a></p>
+      </details>
+      <details>
+        <summary>Where does Cursor store its rules?</summary>
+        <p>Global rules are <code>.mdc</code> files in <code>~/.cursor/rules/</code>; each project keeps its own <code>.cursor/rules/</code> folder. Older repos may still use the legacy <code>.cursorrules</code> file. <a href="guides/cursor-rules-location.html">Learn more →</a></p>
+      </details>
+      <details>
+        <summary>Where is my MCP server configuration stored?</summary>
+        <p>Everywhere, unfortunately — every tool picks a different file and a different key name. Claude Code uses <code>~/.claude.json</code>, Codex uses TOML, Zed calls the key <code>context_servers</code>. <a href="guides/mcp-config-locations.html">Learn more →</a></p>
+      </details>
+      <details>
+        <summary>What is AGENTS.md?</summary>
+        <p>The open, Linux Foundation-backed standard for AI agent project instructions, used in 60,000+ repositories and read by Codex, Cursor, Windsurf, Amp, Zed and more. <a href="guides/what-is-agents-md.html">Learn more →</a></p>
+      </details>
+      <details>
+        <summary>What is CLAUDE.md?</summary>
+        <p>Claude Code's memory file — instructions it loads automatically every session. There's a global one, a per-project one, and a git-ignored local one, and they stack. <a href="guides/what-is-claude-md.html">Learn more →</a></p>
+      </details>
+      <details>
+        <summary>Can I convert Cursor rules to Claude Code?</summary>
+        <p>Yes — and you don't need a CLI script. Desastre's "Copy to tool…" converts the <code>.mdc</code> format, adjusts the frontmatter, and writes the file where Claude Code expects it. <a href="guides/convert-cursor-rules-to-claude-code.html">Learn more →</a></p>
+      </details>
+      <details>
+        <summary>How do I find every AI config file on my Mac?</summary>
+        <p>By hand: check ~19 dot-folders, Application Support, and every repo you've ever cloned. Or open Desastre and let it scan your home folder in seconds. <a href="guides/find-ai-config-files-mac.html">Learn more →</a></p>
+      </details>
+      <details>
+        <summary>Does Desastre upload my config files anywhere?</summary>
+        <p>No. Everything is read locally and stays on your machine. No account, no sign-in, no telemetry on file contents — and files over 2&nbsp;MB are never even loaded into memory. <a href="https://thaisrc.framer.ai/desastre/privacy-policy">Privacy policy →</a></p>
+      </details>
+      <details>
+        <summary>Which AI tools does Desastre support?</summary>
+        <p>19 and counting: Claude Code, Claude Desktop, Cursor, Windsurf, Codex, GitHub Copilot, Aider, Amp, Antigravity, Gemini CLI, Augment Code, OpenCode, Continue.dev, Cline, Roo Code, Zed, Hermes, OpenClaw and Pi. <a href="#tools">See the list →</a></p>
+      </details>
+      <details>
+        <summary>Is Desastre a subscription?</summary>
+        <p>No. It's $1.99, once, on the Mac App Store. No subscription, no account, no upsell. <a href="https://apps.apple.com/app/desastre-ai-config-manager/id6778777399">Get it here →</a></p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section>
+  <div class="wrap">
+    <div class="cta-final">
+      <h2>Stop guessing where your configs went</h2>
+      <p>Open Desastre. Let it scan. Ten seconds from now you'll know exactly what every AI tool has been writing to your machine.</p>
+      <a class="btn" href="https://apps.apple.com/app/desastre-ai-config-manager/id6778777399">Download on the Mac App&nbsp;Store</a>
+      <p class="price-note">$1.99 one-time · macOS 26+ · 4.7 MB</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot enlarged">
+  <button class="close" aria-label="Close">×</button>
+  <img src="" alt="">
+</div>
+<script>
+(function () {
+  var box = document.getElementById('lightbox');
+  var boxImg = box.querySelector('img');
+  document.querySelectorAll('.shot img, .hero-shot img').forEach(function (img) {
+    img.addEventListener('click', function () {
+      boxImg.src = img.src;
+      boxImg.alt = img.alt;
+      box.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  function close() {
+    box.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  box.addEventListener('click', close);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') close();
+  });
+})();
+</script>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h4>Desastre</h4>
+        <p>The AI config manager for Mac. Every skill, agent, rule and MCP server from 19 AI tools — in one native window.</p>
+      </div>
+      <div>
+        <h4>App</h4>
+        <ul>
+          <li><a href="https://apps.apple.com/app/desastre-ai-config-manager/id6778777399">Mac App Store</a></li>
+          <li><a href="#screenshots">Screenshots</a></li>
+          <li><a href="#how-it-works">How it works</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Guides</h4>
+        <ul>
+          <li><a href="guides/claude-code-config-location.html">Claude Code config</a></li>
+          <li><a href="guides/cursor-rules-location.html">Cursor rules</a></li>
+          <li><a href="guides/mcp-config-locations.html">MCP config locations</a></li>
+          <li><a href="guides/what-is-agents-md.html">AGENTS.md</a></li>
+          <li><a href="guides/find-ai-config-files-mac.html">Find AI configs</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="https://thaisrc.framer.ai/contactForm">Contact</a></li>
+          <li><a href="https://thaisrc.framer.ai/desastre/privacy-policy">Privacy policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fineprint">
+      <span>© 2026 Thais Rodríguez Coso. All rights reserved.</span>
+      <span>Mac and the Mac App Store are trademarks of Apple Inc.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

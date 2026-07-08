@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Where Does Cursor Store Rules? .cursor/rules, .cursorrules and .mdc Explained</title>
+<meta name="description" content="Cursor stores global rules in ~/.cursor/rules/ and project rules in .cursor/rules/ as .mdc files. Older repos use the legacy .cursorrules file. Here's the full map, the .mdc format, and where MCP config goes.">
+<link rel="canonical" href="https://desastre.app/guides/cursor-rules-location.html">
+<link rel="icon" href="../assets/icon-512.png">
+<link rel="stylesheet" href="../style.css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Where Does Cursor Store Rules?">
+<meta property="og:description" content=".cursor/rules vs the legacy .cursorrules, the .mdc format, and where Cursor keeps MCP and skills.">
+<meta property="og:url" content="https://desastre.app/guides/cursor-rules-location.html">
+<meta property="og:image" content="https://desastre.app/assets/screenshot-1.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Where Does Cursor Store Rules?",
+  "description": "Every location Cursor reads rules from on macOS: ~/.cursor/rules/, project .cursor/rules/ folders, the legacy .cursorrules file, plus MCP and skills paths.",
+  "image": "https://desastre.app/assets/screenshot-1.png",
+  "author": { "@type": "Person", "name": "Thais Rodríguez Coso" },
+  "publisher": { "@type": "Organization", "name": "Desastre", "logo": { "@type": "ImageObject", "url": "https://desastre.app/assets/icon-512.png" } },
+  "mainEntityOfPage": "https://desastre.app/guides/cursor-rules-location.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Desastre", "item": "https://desastre.app/" },
+    { "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://desastre.app/#guides" },
+    { "@type": "ListItem", "position": 3, "name": "Cursor rules location" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="wrap">
+  <nav class="nav" aria-label="Main">
+    <a class="brand" href="../index.html"><img src="../assets/icon-512.png" alt="Desastre app icon" width="36" height="36"> Desastre</a>
+    <div class="links">
+      <a href="../index.html#guides">Guides</a>
+      <a class="btn small" href="https://apps.apple.com/app/desastre-ai-config-manager/id6778777399">Get Desastre</a>
+    </div>
+  </nav>
+</header>
+
+<main class="article">
+  <p class="breadcrumb"><a href="../index.html">Home</a> / <a href="../index.html#guides">Guides</a> / Cursor rules location</p>
+  <h1>Where does Cursor store rules?</h1>
+
+  <div class="quick-answer">
+    <strong>Quick answer:</strong> Global Cursor rules live in <code>~/.cursor/rules/</code> as <code>.mdc</code> files. Project rules live in each repo's <code>.cursor/rules/</code> folder. Older projects may still carry a legacy <code>.cursorrules</code> file at the repo root — Cursor still reads it, but the folder format is the current standard.
+  </div>
+
+  <h2>Every Cursor config location on your Mac</h2>
+  <table>
+    <tr><th>What</th><th>Path</th><th>Notes</th></tr>
+    <tr><td>Global rules</td><td><code>~/.cursor/rules/</code></td><td><code>.mdc</code> files, apply across projects</td></tr>
+    <tr><td>Project rules</td><td><code>&lt;repo&gt;/.cursor/rules/</code></td><td><code>.mdc</code> files, committed with the repo</td></tr>
+    <tr><td>Legacy rules</td><td><code>&lt;repo&gt;/.cursorrules</code></td><td>Single plain-text file, deprecated but still read</td></tr>
+    <tr><td>Global MCP servers</td><td><code>~/.cursor/mcp.json</code></td><td>Servers under the <code>mcpServers</code> key</td></tr>
+    <tr><td>Project MCP servers</td><td><code>&lt;repo&gt;/.cursor/mcp.json</code></td><td>Same format, per project</td></tr>
+    <tr><td>Skills</td><td><code>~/.cursor/skills/</code> and <code>&lt;repo&gt;/.cursor/skills/</code></td><td>Folder per skill with <code>SKILL.md</code></td></tr>
+    <tr><td>Agents</td><td><code>~/.cursor/agents/</code> and <code>&lt;repo&gt;/.cursor/agents/</code></td><td>Markdown files</td></tr>
+    <tr><td>Project instructions</td><td><code>&lt;repo&gt;/AGENTS.md</code></td><td>Cursor reads the <a href="what-is-agents-md.html">open AGENTS.md standard</a></td></tr>
+  </table>
+
+  <h2>The .mdc format</h2>
+  <p>Cursor rules are Markdown with a YAML frontmatter block that controls when the rule activates:</p>
+  <pre><code>---
+description: How to write API endpoints in this codebase
+globs: ["src/api/**/*.ts"]
+alwaysApply: false
+---
+
+Use zod for validation. Every endpoint returns a typed Result.</code></pre>
+  <p><code>description</code> tells the model when the rule matters, <code>globs</code> scopes it to matching files, and <code>alwaysApply: true</code> injects it into every request. These three fields are Cursor-specific — which is exactly what makes <a href="convert-cursor-rules-to-claude-code.html">moving rules to other tools</a> fiddly.</p>
+
+  <h2>Why rules go missing</h2>
+  <p>Three common reasons a rule you wrote isn't where you think it is:</p>
+  <ul>
+    <li><strong>It's in the other scope.</strong> You wrote it globally (<code>~/.cursor/rules/</code>) but you're looking in the project, or vice versa.</li>
+    <li><strong>It's in the legacy file.</strong> An old repo's <code>.cursorrules</code> still works silently while you search the <code>.cursor/rules/</code> folder that doesn't exist.</li>
+    <li><strong>It's in a repo you forgot.</strong> Rules you perfected in one project don't follow you to the next — they stay behind, scattered across every project you've ever opened.</li>
+  </ul>
+
+  <div class="shot-inline">
+    <img src="../assets/screenshot-1.png" alt="Desastre listing Cursor rules alongside Claude Code and Codex configs, with global and per-project scope filters" width="1280" height="800" loading="lazy">
+  </div>
+
+  <h2>Inventory every rule you've ever written</h2>
+  <p><a href="../index.html">Desastre</a> scans your home folder and lists every Cursor rule on your machine — global <code>.mdc</code> files, project rules folders, and legacy <code>.cursorrules</code> files in repos you haven't opened in months. Filter to Cursor, flip between Global and Projects, and preview any rule with its frontmatter rendered as a clean header.</p>
+  <p>Found a rule worth reusing? "Copy to tool…" sends it to Claude Code, Windsurf or Continue.dev with the format converted automatically — <code>globs</code> and <code>alwaysApply</code> stripped, extension changed, nothing overwritten.</p>
+
+  <div class="app-cta">
+    <img class="icon" src="../assets/icon-512.png" alt="Desastre app icon" width="64" height="64">
+    <div class="body">
+      <h3>Desastre — AI config manager for Mac</h3>
+      <p>Every Cursor rule, skill and MCP server on your machine — plus 18 other tools — in one native window. $1.99, one time.</p>
+      <a class="btn small" href="https://apps.apple.com/app/desastre-ai-config-manager/id6778777399">Download on the Mac App Store</a>
+    </div>
+  </div>
+
+  <div class="related">
+    <h2>Related guides</h2>
+    <ul>
+      <li><a href="convert-cursor-rules-to-claude-code.html">How to convert Cursor rules to Claude Code</a></li>
+      <li><a href="claude-code-config-location.html">Where does Claude Code store settings, skills and agents?</a></li>
+      <li><a href="mcp-config-locations.html">Where is MCP server config stored? Every tool's path</a></li>
+    </ul>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap fineprint">
+    <span>© 2026 Thais Rodríguez Coso · <a href="../index.html">Desastre</a></span>
+    <span><a href="https://thaisrc.framer.ai/desastre/privacy-policy">Privacy</a> · <a href="https://thaisrc.framer.ai/contactForm">Contact</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

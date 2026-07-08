@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Where Is MCP Server Config Stored? Every Tool's File Path (13-Tool Table)</title>
+<meta name="description" content="MCP config lives somewhere different in every tool: ~/.claude.json for Claude Code, claude_desktop_config.json for Claude Desktop, ~/.cursor/mcp.json for Cursor, TOML for Codex, context_servers for Zed. The complete location table.">
+<link rel="canonical" href="https://desastre.app/guides/mcp-config-locations.html">
+<link rel="icon" href="../assets/icon-512.png">
+<link rel="stylesheet" href="../style.css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Where Is MCP Server Config Stored? Every Tool's Path">
+<meta property="og:description" content="13 tools, 13 different files and key names. The complete MCP config location table for macOS.">
+<meta property="og:url" content="https://desastre.app/guides/mcp-config-locations.html">
+<meta property="og:image" content="https://desastre.app/assets/screenshot-1.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Where Is MCP Server Config Stored? Every Tool's Path",
+  "description": "The complete table of MCP server configuration locations across Claude Code, Claude Desktop, Cursor, Windsurf, Codex, Copilot, Zed and more.",
+  "image": "https://desastre.app/assets/screenshot-1.png",
+  "author": { "@type": "Person", "name": "Thais Rodríguez Coso" },
+  "publisher": { "@type": "Organization", "name": "Desastre", "logo": { "@type": "ImageObject", "url": "https://desastre.app/assets/icon-512.png" } },
+  "mainEntityOfPage": "https://desastre.app/guides/mcp-config-locations.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Desastre", "item": "https://desastre.app/" },
+    { "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://desastre.app/#guides" },
+    { "@type": "ListItem", "position": 3, "name": "MCP config locations" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="wrap">
+  <nav class="nav" aria-label="Main">
+    <a class="brand" href="../index.html"><img src="../assets/icon-512.png" alt="Desastre app icon" width="36" height="36"> Desastre</a>
+    <div class="links">
+      <a href="../index.html#guides">Guides</a>
+      <a class="btn small" href="https://apps.apple.com/app/desastre-ai-config-manager/id6778777399">Get Desastre</a>
+    </div>
+  </nav>
+</header>
+
+<main class="article">
+  <p class="breadcrumb"><a href="../index.html">Home</a> / <a href="../index.html#guides">Guides</a> / MCP config locations</p>
+  <h1>Where is MCP server config stored? Every tool's path</h1>
+
+  <div class="quick-answer">
+    <strong>Quick answer:</strong> There is no standard location. Claude Code stores MCP servers in <code>~/.claude.json</code>, Claude Desktop in <code>~/Library/Application Support/Claude/claude_desktop_config.json</code>, Cursor in <code>~/.cursor/mcp.json</code>, Codex in TOML blocks inside <code>~/.codex/config.toml</code>, and Zed under a key called <code>context_servers</code> (not <code>mcpServers</code>). The full table for 13 tools is below.
+  </div>
+
+  <h2>The complete MCP config location table (macOS)</h2>
+  <p>Same protocol, thirteen different homes. File, format, <em>and</em> the JSON key name all vary per tool:</p>
+  <table>
+    <tr><th>Tool</th><th>Global config file</th><th>Key / format</th></tr>
+    <tr><td>Claude Code</td><td><code>~/.claude.json</code></td><td><code>mcpServers</code> (JSON) — note: <em>outside</em> <code>~/.claude/</code></td></tr>
+    <tr><td>Claude Desktop</td><td><code>~/Library/Application Support/Claude/claude_desktop_config.json</code></td><td><code>mcpServers</code> (JSON)</td></tr>
+    <tr><td>Cursor</td><td><code>~/.cursor/mcp.json</code></td><td><code>mcpServers</code> (JSON)</td></tr>
+    <tr><td>Windsurf</td><td><code>~/.codeium/windsurf/mcp_config.json</code></td><td><code>mcpServers</code> (JSON)</td></tr>
+    <tr><td>Codex</td><td><code>~/.codex/config.toml</code></td><td><code>[mcp_servers.&lt;name&gt;]</code> blocks (TOML)</td></tr>
+    <tr><td>GitHub Copilot CLI</td><td><code>~/.copilot/mcp-config.json</code></td><td><code>mcpServers</code> (JSON)</td></tr>
+    <tr><td>Amp</td><td><code>~/.config/amp/settings.json</code></td><td><code>amp.mcpServers</code> (JSON, nested)</td></tr>
+    <tr><td>Antigravity</td><td><code>~/.gemini/antigravity/mcp_config.json</code></td><td><code>mcpServers</code> (JSON)</td></tr>
+    <tr><td>Gemini CLI</td><td><code>~/.gemini/settings.json</code></td><td><code>mcpServers</code> (JSON, inside settings)</td></tr>
+    <tr><td>OpenCode</td><td><code>~/.config/opencode/opencode.json</code></td><td><code>mcp</code> (JSON)</td></tr>
+    <tr><td>Continue.dev</td><td><code>~/.continue/mcpServers/*.json</code></td><td>One file per server, or inline in <code>config.yaml</code></td></tr>
+    <tr><td>Zed</td><td><code>~/.config/zed/settings.json</code></td><td><code>context_servers</code> (JSON — <strong>not</strong> <code>mcpServers</code>)</td></tr>
+    <tr><td>Cline / Roo Code</td><td>VS Code extension globalStorage <code>mcp_settings.json</code></td><td><code>mcpServers</code> (JSON, buried in <code>~/Library/Application Support/Code/…</code>)</td></tr>
+  </table>
+
+  <h3>Project-level MCP config</h3>
+  <p>Several tools also read a per-repo MCP file, which is how a project ships its own servers:</p>
+  <ul>
+    <li><code>.mcp.json</code> at the repo root — Claude Code and Copilot</li>
+    <li><code>.cursor/mcp.json</code> — Cursor</li>
+    <li><code>.github/mcp.json</code> — Copilot</li>
+    <li><code>.roo/mcp.json</code> — Roo Code</li>
+    <li><code>opencode.json</code> — OpenCode</li>
+  </ul>
+
+  <h2>Why this bites you</h2>
+  <p>Add a filesystem server to Claude Desktop and it doesn't exist in Claude Code. Configure Postgres access in Cursor and Windsurf knows nothing about it. Every tool re-invents the location, so your MCP setup fragments into a dozen files — some JSON, one TOML, one hiding under a key name nothing else uses. When a server breaks or you rotate a token, you get to remember all of them.</p>
+
+  <div class="shot-inline">
+    <img src="../assets/screenshot-1.png" alt="Desastre inventory with the MCP Servers section selected, showing MCP config files from multiple tools in one list" width="1280" height="800" loading="lazy">
+  </div>
+
+  <h2>See every MCP config on your machine in one list</h2>
+  <p><a href="../index.html">Desastre</a> knows every path and key name in the table above. It scans your machine and lists each MCP config file it finds — <code>~/.claude.json</code>, <code>claude_desktop_config.json</code>, the TOML in <code>~/.codex/</code>, project-level <code>.mcp.json</code> files — under one <strong>MCP Servers</strong> section, each tagged with its tool. Click any of them for a syntax-highlighted preview of exactly which servers it defines, then copy a JSON-based config to another tool without retyping it.</p>
+
+  <div class="app-cta">
+    <img class="icon" src="../assets/icon-512.png" alt="Desastre app icon" width="64" height="64">
+    <div class="body">
+      <h3>Desastre — AI config manager for Mac</h3>
+      <p>Every MCP server config from 19 AI tools, found automatically and previewed in one native window. $1.99, one time.</p>
+      <a class="btn small" href="https://apps.apple.com/app/desastre-ai-config-manager/id6778777399">Download on the Mac App Store</a>
+    </div>
+  </div>
+
+  <div class="related">
+    <h2>Related guides</h2>
+    <ul>
+      <li><a href="claude-code-config-location.html">Where does Claude Code store settings, skills and agents?</a></li>
+      <li><a href="windsurf-rules-location.html">Where does Windsurf store rules and config?</a></li>
+      <li><a href="find-ai-config-files-mac.html">How to find every AI config file on your Mac</a></li>
+    </ul>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap fineprint">
+    <span>© 2026 Thais Rodríguez Coso · <a href="../index.html">Desastre</a></span>
+    <span><a href="https://thaisrc.framer.ai/desastre/privacy-policy">Privacy</a> · <a href="https://thaisrc.framer.ai/contactForm">Contact</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

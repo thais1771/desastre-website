@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Convert Cursor Rules to Claude Code (No Scripts Required)</title>
+<meta name="description" content="Cursor .mdc rules use frontmatter Claude Code doesn't understand. Here's what actually changes between the formats, how to convert by hand, and how to move rules between Cursor and Claude Code in one click.">
+<link rel="canonical" href="https://desastre.app/guides/convert-cursor-rules-to-claude-code.html">
+<link rel="icon" href="../assets/icon-512.png">
+<link rel="stylesheet" href="../style.css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Convert Cursor Rules to Claude Code">
+<meta property="og:description" content="What changes between .mdc and Claude Code's format, and how to move rules across tools in one click.">
+<meta property="og:url" content="https://desastre.app/guides/convert-cursor-rules-to-claude-code.html">
+<meta property="og:image" content="https://desastre.app/assets/screenshot-3.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Convert Cursor Rules to Claude Code",
+  "description": "The differences between Cursor's .mdc rule format and Claude Code's Markdown conventions, manual conversion steps, and one-click conversion with Desastre.",
+  "image": "https://desastre.app/assets/screenshot-3.png",
+  "author": { "@type": "Person", "name": "Thais Rodríguez Coso" },
+  "publisher": { "@type": "Organization", "name": "Desastre", "logo": { "@type": "ImageObject", "url": "https://desastre.app/assets/icon-512.png" } },
+  "mainEntityOfPage": "https://desastre.app/guides/convert-cursor-rules-to-claude-code.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Convert Cursor rules to Claude Code with Desastre",
+  "step": [
+    { "@type": "HowToStep", "name": "Open Desastre and let it scan", "text": "Desastre finds every Cursor rule on your machine automatically — global ~/.cursor/rules/ and per-project .cursor/rules/ folders." },
+    { "@type": "HowToStep", "name": "Select the rule", "text": "Click the rule to preview it with its frontmatter rendered as a header, and confirm it's the one you want." },
+    { "@type": "HowToStep", "name": "Copy to tool", "text": "Click 'Copy to tool…', pick Claude Code, and Desastre converts the .mdc format, strips Cursor-specific frontmatter, and writes the file where Claude Code reads it — without overwriting anything." }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="wrap">
+  <nav class="nav" aria-label="Main">
+    <a class="brand" href="../index.html"><img src="../assets/icon-512.png" alt="Desastre app icon" width="36" height="36"> Desastre</a>
+    <div class="links">
+      <a href="../index.html#guides">Guides</a>
+      <a class="btn small" href="https://apps.apple.com/app/desastre-ai-config-manager/id6778777399">Get Desastre</a>
+    </div>
+  </nav>
+</header>
+
+<main class="article">
+  <p class="breadcrumb"><a href="../index.html">Home</a> / <a href="../index.html#guides">Guides</a> / Convert Cursor rules to Claude Code</p>
+  <h1>How to convert Cursor rules to Claude Code</h1>
+
+  <div class="quick-answer">
+    <strong>Quick answer:</strong> A Cursor rule is Markdown with Cursor-specific frontmatter (<code>globs</code>, <code>alwaysApply</code>) and an <code>.mdc</code> extension. To convert one for Claude Code: strip those two frontmatter fields, change the extension to <code>.md</code>, and either merge the content into <code>CLAUDE.md</code> or save it as a skill. Or skip the manual work — <a href="../index.html">Desastre</a> does the conversion in one click.
+  </div>
+
+  <h2>Why the formats don't match</h2>
+  <p>Both tools speak Markdown, but they disagree on everything around it:</p>
+  <table>
+    <tr><th></th><th>Cursor</th><th>Claude Code</th></tr>
+    <tr><td>File extension</td><td><code>.mdc</code></td><td><code>.md</code></td></tr>
+    <tr><td>Global location</td><td><code>~/.cursor/rules/</code></td><td><code>~/.claude/CLAUDE.md</code> or <code>~/.claude/skills/</code></td></tr>
+    <tr><td>Project location</td><td><code>.cursor/rules/</code></td><td><code>CLAUDE.md</code> or <code>.claude/skills/</code></td></tr>
+    <tr><td>Scoping</td><td><code>globs</code> frontmatter per rule</td><td>No glob scoping — instructions are always-on, skills load on demand</td></tr>
+    <tr><td>Always-on switch</td><td><code>alwaysApply: true</code></td><td>Anything in <code>CLAUDE.md</code> is always on</td></tr>
+  </table>
+  <p>So "conversion" is really a routing decision: an <code>alwaysApply</code> rule belongs in <code>CLAUDE.md</code>; a descriptive, situational rule maps naturally to a <a href="claude-code-config-location.html">Claude Code skill</a> with its <code>description</code> intact.</p>
+
+  <h2>Converting by hand</h2>
+  <ol>
+    <li>Open the <code>.mdc</code> file and delete the <code>globs</code> and <code>alwaysApply</code> lines from the frontmatter. Keep <code>name</code> and <code>description</code>.</li>
+    <li>If the rule was <code>alwaysApply: true</code>, paste the body into your project's <code>CLAUDE.md</code> (or <code>~/.claude/CLAUDE.md</code> for global rules).</li>
+    <li>Otherwise, save it as <code>.claude/skills/&lt;rule-name&gt;/SKILL.md</code> so Claude Code loads it when the description matches the task.</li>
+    <li>Repeat for every rule, in every repo, without overwriting anything that's already there.</li>
+  </ol>
+  <p>Step 4 is where this stops being a five-minute job. There are CLI tools (rule-porter, rulesync) that batch-convert a single repo, but they assume you remember which repos have rules worth converting in the first place.</p>
+
+  <h2>Converting in one click with Desastre</h2>
+  <p><a href="../index.html">Desastre</a> handles both the finding and the converting:</p>
+  <ol>
+    <li><strong>Scan.</strong> Desastre lists every Cursor rule on your machine — global and per-project, including repos you forgot about, even legacy <code>.cursorrules</code> files.</li>
+    <li><strong>Pick.</strong> Preview any rule with its frontmatter rendered as a clean header.</li>
+    <li><strong>Copy.</strong> Hit <em>"Copy to tool…"</em>, choose Claude Code, done. The <code>.mdc</code> becomes <code>.md</code>, Cursor-only frontmatter is stripped, and the file lands where Claude Code reads it. If a file already exists at the destination, Desastre flags the conflict and refuses to overwrite — it never destroys anything.</li>
+  </ol>
+
+  <div class="shot-inline">
+    <img src="../assets/screenshot-3.png" alt="Desastre's Copy to tool sheet converting a config between AI tools, showing which destinations are ready and which have conflicts" width="1280" height="800" loading="lazy">
+  </div>
+
+  <p>It works in the other direction too — Claude Code agents to Cursor, rules to Windsurf or Continue.dev — and the same one-click copy moves skills, agents, instructions and JSON-based MCP configs between 19 supported tools, always same-scope (global→global, project→project) so nothing leaks across repos.</p>
+
+  <div class="app-cta">
+    <img class="icon" src="../assets/icon-512.png" alt="Desastre app icon" width="64" height="64">
+    <div class="body">
+      <h3>Desastre — AI config manager for Mac</h3>
+      <p>Find every rule you've written, then move it to any tool in one click. $1.99, one time — cheaper than the coffee you'd drink converting them by hand.</p>
+      <a class="btn small" href="https://apps.apple.com/app/desastre-ai-config-manager/id6778777399">Download on the Mac App Store</a>
+    </div>
+  </div>
+
+  <div class="related">
+    <h2>Related guides</h2>
+    <ul>
+      <li><a href="cursor-rules-location.html">Where does Cursor store rules?</a></li>
+      <li><a href="what-is-claude-md.html">What is CLAUDE.md? Claude Code's memory file explained</a></li>
+      <li><a href="what-is-agents-md.html">What is AGENTS.md? The shared instruction standard</a></li>
+    </ul>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap fineprint">
+    <span>© 2026 Thais Rodríguez Coso · <a href="../index.html">Desastre</a></span>
+    <span><a href="https://thaisrc.framer.ai/desastre/privacy-policy">Privacy</a> · <a href="https://thaisrc.framer.ai/contactForm">Contact</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

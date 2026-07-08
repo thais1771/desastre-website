@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Where Does Windsurf Store Rules and Config? (Both Hidden Folders)</title>
+<meta name="description" content="Windsurf splits config across two roots: ~/.windsurf/rules/ and ~/.codeium/windsurf/ (memories, workflows, mcp_config.json). Plus project .windsurf/rules/ and the legacy .windsurfrules file. The complete map.">
+<link rel="canonical" href="https://desastre.app/guides/windsurf-rules-location.html">
+<link rel="icon" href="../assets/icon-512.png">
+<link rel="stylesheet" href="../style.css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Where Does Windsurf Store Rules and Config?">
+<meta property="og:description" content="Windsurf splits its config across two hidden folders. Here's both halves, plus project-level rules and MCP.">
+<meta property="og:url" content="https://desastre.app/guides/windsurf-rules-location.html">
+<meta property="og:image" content="https://desastre.app/assets/screenshot-1.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Where Does Windsurf Store Rules and Config?",
+  "description": "Every Windsurf configuration location on macOS: ~/.windsurf/, ~/.codeium/windsurf/, project rules, workflows, memories and MCP config.",
+  "image": "https://desastre.app/assets/screenshot-1.png",
+  "author": { "@type": "Person", "name": "Thais Rodríguez Coso" },
+  "publisher": { "@type": "Organization", "name": "Desastre", "logo": { "@type": "ImageObject", "url": "https://desastre.app/assets/icon-512.png" } },
+  "mainEntityOfPage": "https://desastre.app/guides/windsurf-rules-location.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Desastre", "item": "https://desastre.app/" },
+    { "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://desastre.app/#guides" },
+    { "@type": "ListItem", "position": 3, "name": "Windsurf rules location" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="wrap">
+  <nav class="nav" aria-label="Main">
+    <a class="brand" href="../index.html"><img src="../assets/icon-512.png" alt="Desastre app icon" width="36" height="36"> Desastre</a>
+    <div class="links">
+      <a href="../index.html#guides">Guides</a>
+      <a class="btn small" href="https://apps.apple.com/app/desastre-ai-config-manager/id6778777399">Get Desastre</a>
+    </div>
+  </nav>
+</header>
+
+<main class="article">
+  <p class="breadcrumb"><a href="../index.html">Home</a> / <a href="../index.html#guides">Guides</a> / Windsurf rules location</p>
+  <h1>Where does Windsurf store rules and config?</h1>
+
+  <div class="quick-answer">
+    <strong>Quick answer:</strong> In <em>two</em> places. Global rules live in <code>~/.windsurf/rules/</code>, but memories, workflows and MCP config live under <code>~/.codeium/windsurf/</code> — a leftover from Windsurf's Codeium origins. Project rules go in <code>.windsurf/rules/</code> inside each repo (legacy repos may use a <code>.windsurfrules</code> file).
+  </div>
+
+  <h2>The two-roots quirk</h2>
+  <p>Windsurf grew out of Codeium, and its configuration never fully moved house. The result is one tool with two hidden homes in your home directory:</p>
+  <table>
+    <tr><th>What</th><th>Path</th><th>Notes</th></tr>
+    <tr><td>Global rules</td><td><code>~/.windsurf/rules/</code></td><td>Markdown files</td></tr>
+    <tr><td>Global rules (legacy memories)</td><td><code>~/.codeium/windsurf/memories/global_rules.md</code></td><td>Single file — still read</td></tr>
+    <tr><td>Workflows</td><td><code>~/.codeium/windsurf/workflows/</code></td><td>Markdown per workflow</td></tr>
+    <tr><td>MCP servers</td><td><code>~/.codeium/windsurf/mcp_config.json</code></td><td><code>mcpServers</code> key</td></tr>
+  </table>
+  <p>If you only check <code>~/.windsurf/</code>, you'll miss your MCP servers, your workflows, and possibly rules living in the old memories file. Both roots are live at once.</p>
+
+  <h2>Project-level Windsurf config</h2>
+  <table>
+    <tr><th>What</th><th>Path</th></tr>
+    <tr><td>Project rules</td><td><code>&lt;repo&gt;/.windsurf/rules/</code></td></tr>
+    <tr><td>Project workflows</td><td><code>&lt;repo&gt;/.windsurf/workflows/</code></td></tr>
+    <tr><td>Legacy rules file</td><td><code>&lt;repo&gt;/.windsurfrules</code></td></tr>
+    <tr><td>Shared instructions</td><td><code>&lt;repo&gt;/AGENTS.md</code> — Windsurf reads the <a href="what-is-agents-md.html">open standard</a></td></tr>
+  </table>
+
+  <h2>Why this matters in practice</h2>
+  <ul>
+    <li><strong>Backups and dotfile repos miss half the config.</strong> Sync <code>~/.windsurf/</code> to a new machine and Windsurf arrives with no MCP servers and no workflows.</li>
+    <li><strong>Cleanup misses the other half.</strong> Uninstall Windsurf, delete <code>~/.windsurf/</code>, and <code>~/.codeium/</code> quietly stays behind.</li>
+    <li><strong>Debugging goes in circles.</strong> "Why is this rule still applying?" — because it's in <code>global_rules.md</code> in the root you didn't check.</li>
+  </ul>
+
+  <div class="shot-inline">
+    <img src="../assets/screenshot-1.png" alt="Desastre showing configs from multiple tools including Windsurf rules from both config roots in a single inventory" width="1280" height="800" loading="lazy">
+  </div>
+
+  <h2>Both roots, one window</h2>
+  <p><a href="../index.html">Desastre</a> scans <code>~/.windsurf/</code> <em>and</em> <code>~/.codeium/windsurf/</code> — plus every project's <code>.windsurf/</code> folder and legacy <code>.windsurfrules</code> files — and shows everything in one inventory, tagged Windsurf. Rules, workflows, memories and MCP config sit side by side with your Claude Code and Cursor configs, so you can compare what each tool knows and copy the good rules across with automatic format conversion.</p>
+
+  <div class="app-cta">
+    <img class="icon" src="../assets/icon-512.png" alt="Desastre app icon" width="64" height="64">
+    <div class="body">
+      <h3>Desastre — AI config manager for Mac</h3>
+      <p>Both Windsurf config roots — and 18 other tools — discovered automatically in one native window. $1.99, one time.</p>
+      <a class="btn small" href="https://apps.apple.com/app/desastre-ai-config-manager/id6778777399">Download on the Mac App Store</a>
+    </div>
+  </div>
+
+  <div class="related">
+    <h2>Related guides</h2>
+    <ul>
+      <li><a href="cursor-rules-location.html">Where does Cursor store rules?</a></li>
+      <li><a href="mcp-config-locations.html">Where is MCP server config stored? Every tool's path</a></li>
+      <li><a href="find-ai-config-files-mac.html">How to find every AI config file on your Mac</a></li>
+    </ul>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap fineprint">
+    <span>© 2026 Thais Rodríguez Coso · <a href="../index.html">Desastre</a></span>
+    <span><a href="https://thaisrc.framer.ai/desastre/privacy-policy">Privacy</a> · <a href="https://thaisrc.framer.ai/contactForm">Contact</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

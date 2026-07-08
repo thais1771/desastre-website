@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Where Does GitHub Copilot Store Custom Instructions? (Full Path Map)</title>
+<meta name="description" content="GitHub Copilot reads .github/copilot-instructions.md per project, ~/.copilot/copilot-instructions.md globally, plus .github/instructions/*.instructions.md, agents and MCP config. The complete Copilot config location map.">
+<link rel="canonical" href="https://desastre.app/guides/copilot-instructions-location.html">
+<link rel="icon" href="../assets/icon-512.png">
+<link rel="stylesheet" href="../style.css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Where Does GitHub Copilot Store Custom Instructions?">
+<meta property="og:description" content="copilot-instructions.md, .github/instructions/, agents and MCP — the full GitHub Copilot config map for macOS.">
+<meta property="og:url" content="https://desastre.app/guides/copilot-instructions-location.html">
+<meta property="og:image" content="https://desastre.app/assets/screenshot-1.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Where Does GitHub Copilot Store Custom Instructions?",
+  "description": "Every GitHub Copilot configuration location: project and global copilot-instructions.md, scoped .instructions.md files, agents and MCP config.",
+  "image": "https://desastre.app/assets/screenshot-1.png",
+  "author": { "@type": "Person", "name": "Thais Rodríguez Coso" },
+  "publisher": { "@type": "Organization", "name": "Desastre", "logo": { "@type": "ImageObject", "url": "https://desastre.app/assets/icon-512.png" } },
+  "mainEntityOfPage": "https://desastre.app/guides/copilot-instructions-location.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Desastre", "item": "https://desastre.app/" },
+    { "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://desastre.app/#guides" },
+    { "@type": "ListItem", "position": 3, "name": "Copilot instructions location" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="wrap">
+  <nav class="nav" aria-label="Main">
+    <a class="brand" href="../index.html"><img src="../assets/icon-512.png" alt="Desastre app icon" width="36" height="36"> Desastre</a>
+    <div class="links">
+      <a href="../index.html#guides">Guides</a>
+      <a class="btn small" href="https://apps.apple.com/app/desastre-ai-config-manager/id6778777399">Get Desastre</a>
+    </div>
+  </nav>
+</header>
+
+<main class="article">
+  <p class="breadcrumb"><a href="../index.html">Home</a> / <a href="../index.html#guides">Guides</a> / Copilot instructions location</p>
+  <h1>Where does GitHub Copilot store custom instructions?</h1>
+
+  <div class="quick-answer">
+    <strong>Quick answer:</strong> Per project, Copilot reads <code>.github/copilot-instructions.md</code> at the repo root, plus scoped <code>.github/instructions/*.instructions.md</code> files. Globally, the Copilot CLI reads <code>~/.copilot/copilot-instructions.md</code>. Copilot also honors the shared <code>AGENTS.md</code> standard, keeps agents in <code>.github/agents/</code>, and stores MCP config in <code>~/.copilot/mcp-config.json</code>.
+  </div>
+
+  <h2>Every Copilot config location</h2>
+  <h3>Per project (inside the repo)</h3>
+  <table>
+    <tr><th>What</th><th>Path</th><th>Notes</th></tr>
+    <tr><td>Main instructions</td><td><code>.github/copilot-instructions.md</code></td><td>Applies to the whole repo</td></tr>
+    <tr><td>Scoped instructions</td><td><code>.github/instructions/*.instructions.md</code></td><td>Frontmatter <code>applyTo</code> globs scope each file</td></tr>
+    <tr><td>Shared standard</td><td><code>AGENTS.md</code></td><td>Copilot reads the <a href="what-is-agents-md.html">open standard</a> too</td></tr>
+    <tr><td>Agents</td><td><code>.github/agents/</code></td><td>One Markdown file per agent</td></tr>
+    <tr><td>MCP servers</td><td><code>.github/mcp.json</code> or <code>.mcp.json</code></td><td>Servers under <code>mcpServers</code></td></tr>
+  </table>
+
+  <h3>Global (Copilot CLI, your home directory)</h3>
+  <table>
+    <tr><th>What</th><th>Path</th><th>Notes</th></tr>
+    <tr><td>Global instructions</td><td><code>~/.copilot/copilot-instructions.md</code></td><td>Override dirs via <code>COPILOT_CUSTOM_INSTRUCTIONS_DIRS</code></td></tr>
+    <tr><td>Global agents</td><td><code>~/.copilot/agents/</code></td><td>Markdown files</td></tr>
+    <tr><td>Global MCP servers</td><td><code>~/.copilot/mcp-config.json</code></td><td>Relocatable via <code>COPILOT_HOME</code></td></tr>
+  </table>
+
+  <h2>The .github/ scatter problem</h2>
+  <p>Copilot's config hides inside a folder most people associate with CI workflows. That has two consequences:</p>
+  <ul>
+    <li><strong>You forget it exists.</strong> A <code>copilot-instructions.md</code> written a year ago keeps steering Copilot in that repo long after your conventions changed.</li>
+    <li><strong>It doesn't travel.</strong> Instructions live per repo, so each new project starts from zero — unless you remember what you wrote in the last one and where.</li>
+  </ul>
+  <p>Add the global CLI files in <code>~/.copilot/</code> and one tool's config is spread across every repo you own plus a hidden home-directory folder.</p>
+
+  <div class="shot-inline">
+    <img src="../assets/screenshot-1.png" alt="Desastre inventory showing instruction files including Copilot configs across multiple projects, each tagged with its tool" width="1280" height="800" loading="lazy">
+  </div>
+
+  <h2>Every Copilot file, surfaced automatically</h2>
+  <p><a href="../index.html">Desastre</a> scans your machine and lists every Copilot config it finds — <code>copilot-instructions.md</code> in every repo, scoped <code>.instructions.md</code> files, <code>.github/agents/</code>, the global <code>~/.copilot/</code> files and MCP config — in one window, tagged with the project each belongs to. Files Copilot shares with other tools (like <code>AGENTS.md</code> or <code>.mcp.json</code>) are tagged with every compatible tool, so you can see at a glance which instructions serve double duty.</p>
+  <p>Want to bring a great repo's instructions to Claude Code or Codex? <em>"Copy to tool…"</em> renames and places the file correctly in one click.</p>
+
+  <div class="app-cta">
+    <img class="icon" src="../assets/icon-512.png" alt="Desastre app icon" width="64" height="64">
+    <div class="body">
+      <h3>Desastre — AI config manager for Mac</h3>
+      <p>Every Copilot instruction file across all your repos — plus 18 other tools — in one native window. $1.99, one time.</p>
+      <a class="btn small" href="https://apps.apple.com/app/desastre-ai-config-manager/id6778777399">Download on the Mac App Store</a>
+    </div>
+  </div>
+
+  <div class="related">
+    <h2>Related guides</h2>
+    <ul>
+      <li><a href="what-is-agents-md.html">What is AGENTS.md? The shared instruction standard</a></li>
+      <li><a href="mcp-config-locations.html">Where is MCP server config stored? Every tool's path</a></li>
+      <li><a href="find-ai-config-files-mac.html">How to find every AI config file on your Mac</a></li>
+    </ul>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap fineprint">
+    <span>© 2026 Thais Rodríguez Coso · <a href="../index.html">Desastre</a></span>
+    <span><a href="https://thaisrc.framer.ai/desastre/privacy-policy">Privacy</a> · <a href="https://thaisrc.framer.ai/contactForm">Contact</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

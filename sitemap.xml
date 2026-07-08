@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://desastre.app/</loc><lastmod>2026-07-08</lastmod><priority>1.0</priority></url>
+  <url><loc>https://desastre.app/guides/find-ai-config-files-mac.html</loc><lastmod>2026-07-08</lastmod><priority>0.9</priority></url>
+  <url><loc>https://desastre.app/guides/mcp-config-locations.html</loc><lastmod>2026-07-08</lastmod><priority>0.9</priority></url>
+  <url><loc>https://desastre.app/guides/claude-code-config-location.html</loc><lastmod>2026-07-08</lastmod><priority>0.8</priority></url>
+  <url><loc>https://desastre.app/guides/convert-cursor-rules-to-claude-code.html</loc><lastmod>2026-07-08</lastmod><priority>0.8</priority></url>
+  <url><loc>https://desastre.app/guides/cursor-rules-location.html</loc><lastmod>2026-07-08</lastmod><priority>0.8</priority></url>
+  <url><loc>https://desastre.app/guides/what-is-agents-md.html</loc><lastmod>2026-07-08</lastmod><priority>0.8</priority></url>
+  <url><loc>https://desastre.app/guides/what-is-claude-md.html</loc><lastmod>2026-07-08</lastmod><priority>0.8</priority></url>
+  <url><loc>https://desastre.app/guides/copilot-instructions-location.html</loc><lastmod>2026-07-08</lastmod><priority>0.7</priority></url>
+  <url><loc>https://desastre.app/guides/windsurf-rules-location.html</loc><lastmod>2026-07-08</lastmod><priority>0.7</priority></url>
+  <url><loc>https://desastre.app/guides/gemini-cli-config-location.html</loc><lastmod>2026-07-08</lastmod><priority>0.7</priority></url>
+</urlset>

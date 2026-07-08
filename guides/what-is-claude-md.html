@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Is CLAUDE.md? Claude Code's Memory File Explained</title>
+<meta name="description" content="CLAUDE.md is the instruction file Claude Code loads automatically every session. Global (~/.claude/CLAUDE.md), project (repo root) and local (CLAUDE.local.md) layers explained — what goes in each, and how to track them all.">
+<link rel="canonical" href="https://desastre.app/guides/what-is-claude-md.html">
+<link rel="icon" href="../assets/icon-512.png">
+<link rel="stylesheet" href="../style.css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="What Is CLAUDE.md?">
+<meta property="og:description" content="Claude Code's memory file: global vs project vs local layers, what belongs in each, and how to see every CLAUDE.md on your machine.">
+<meta property="og:url" content="https://desastre.app/guides/what-is-claude-md.html">
+<meta property="og:image" content="https://desastre.app/assets/screenshot-2.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "What Is CLAUDE.md?",
+  "description": "CLAUDE.md explained: the memory file Claude Code reads automatically, its global, project and local layers, and what belongs in each.",
+  "image": "https://desastre.app/assets/screenshot-2.png",
+  "author": { "@type": "Person", "name": "Thais Rodríguez Coso" },
+  "publisher": { "@type": "Organization", "name": "Desastre", "logo": { "@type": "ImageObject", "url": "https://desastre.app/assets/icon-512.png" } },
+  "mainEntityOfPage": "https://desastre.app/guides/what-is-claude-md.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Desastre", "item": "https://desastre.app/" },
+    { "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://desastre.app/#guides" },
+    { "@type": "ListItem", "position": 3, "name": "What is CLAUDE.md" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="wrap">
+  <nav class="nav" aria-label="Main">
+    <a class="brand" href="../index.html"><img src="../assets/icon-512.png" alt="Desastre app icon" width="36" height="36"> Desastre</a>
+    <div class="links">
+      <a href="../index.html#guides">Guides</a>
+      <a class="btn small" href="https://apps.apple.com/app/desastre-ai-config-manager/id6778777399">Get Desastre</a>
+    </div>
+  </nav>
+</header>
+
+<main class="article">
+  <p class="breadcrumb"><a href="../index.html">Home</a> / <a href="../index.html#guides">Guides</a> / What is CLAUDE.md</p>
+  <h1>What is CLAUDE.md?</h1>
+
+  <div class="quick-answer">
+    <strong>Quick answer:</strong> <code>CLAUDE.md</code> is Claude Code's memory file — Markdown instructions it loads automatically at the start of every session. It comes in three layers: global (<code>~/.claude/CLAUDE.md</code>, applies everywhere), project (<code>CLAUDE.md</code> at the repo root, committed to git), and local (<code>CLAUDE.local.md</code>, git-ignored personal notes). All applicable layers load together.
+  </div>
+
+  <h2>The three layers</h2>
+  <table>
+    <tr><th>File</th><th>Location</th><th>Scope</th><th>Typical content</th></tr>
+    <tr><td>Global</td><td><code>~/.claude/CLAUDE.md</code></td><td>Every project you touch</td><td>Personal style: "prefer early returns", "never force-push"</td></tr>
+    <tr><td>Project</td><td><code>&lt;repo&gt;/CLAUDE.md</code></td><td>Everyone on the repo</td><td>Build commands, architecture, project conventions</td></tr>
+    <tr><td>Local</td><td><code>&lt;repo&gt;/CLAUDE.local.md</code></td><td>Just you, this repo</td><td>Personal notes, machine-specific paths (git-ignored)</td></tr>
+  </table>
+  <p>Monorepos can nest additional <code>CLAUDE.md</code> files in subdirectories; Claude Code reads the ones on the path to wherever it's working. Everything in a loaded <code>CLAUDE.md</code> is always-on — unlike <a href="claude-code-config-location.html">skills</a>, which load on demand when their description matches the task.</p>
+
+  <h2>What belongs in it (and what doesn't)</h2>
+  <p>The file is prepended to every session, so every line costs attention. Strong CLAUDE.md files are short and factual:</p>
+  <pre><code># MyApp
+
+## Commands
+- Build: pnpm build · Test: pnpm test (vitest)
+
+## Rules
+- API routes live in src/server/routes — one file per resource
+- Don't touch src/legacy/ — scheduled for deletion</code></pre>
+  <p>Things that <em>don't</em> belong: long prose, information Claude can read from the code itself, or instructions for other tools. If several tools need the same instructions, that's what <a href="what-is-agents-md.html">AGENTS.md</a> is for — same content, tool-neutral filename.</p>
+
+  <h2>The sprawl problem</h2>
+  <p>CLAUDE.md multiplies quietly. Six months of AI-assisted work leaves one in nearly every repo — active projects, abandoned experiments, that thing you cloned once. Some are gold (conventions you refined over weeks); some are stale enough to actively mislead. And they're invisible unless you remember to look.</p>
+
+  <div class="shot-inline">
+    <img src="../assets/screenshot-1.png" alt="Desastre listing multiple CLAUDE.md files from different projects side by side, each tagged with its project name" width="1280" height="800" loading="lazy">
+  </div>
+
+  <h2>See every CLAUDE.md you own</h2>
+  <p><a href="../index.html">Desastre</a> scans your machine and lists every <code>CLAUDE.md</code> and <code>CLAUDE.local.md</code> it finds, tagged with the project it belongs to, with last-modified dates so stale ones stand out. Preview any of them fully rendered, reveal them on disk, trash the dead ones — and when another tool needs the same instructions, <em>"Copy to tool…"</em> turns a <code>CLAUDE.md</code> into an <code>AGENTS.md</code> or <code>GEMINI.md</code> in one click.</p>
+
+  <div class="app-cta">
+    <img class="icon" src="../assets/icon-512.png" alt="Desastre app icon" width="64" height="64">
+    <div class="body">
+      <h3>Desastre — AI config manager for Mac</h3>
+      <p>Every CLAUDE.md, skill and agent on your machine — plus 18 other tools — in one native window. $1.99, one time.</p>
+      <a class="btn small" href="https://apps.apple.com/app/desastre-ai-config-manager/id6778777399">Download on the Mac App Store</a>
+    </div>
+  </div>
+
+  <div class="related">
+    <h2>Related guides</h2>
+    <ul>
+      <li><a href="claude-code-config-location.html">Where does Claude Code store settings, skills and agents?</a></li>
+      <li><a href="what-is-agents-md.html">What is AGENTS.md? The shared instruction standard</a></li>
+      <li><a href="convert-cursor-rules-to-claude-code.html">How to convert Cursor rules to Claude Code</a></li>
+    </ul>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap fineprint">
+    <span>© 2026 Thais Rodríguez Coso · <a href="../index.html">Desastre</a></span>
+    <span><a href="https://thaisrc.framer.ai/desastre/privacy-policy">Privacy</a> · <a href="https://thaisrc.framer.ai/contactForm">Contact</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

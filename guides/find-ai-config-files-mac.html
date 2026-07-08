@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Find Every AI Config File on Your Mac (All 19 Tools)</title>
+<meta name="description" content="AI tools hide config in ~/.claude, ~/.cursor, ~/.codex, Application Support and inside every repo you've cloned. Here's where all 19 major tools put their files, how to audit them by hand — and the one-click way.">
+<link rel="canonical" href="https://desastre.app/guides/find-ai-config-files-mac.html">
+<link rel="icon" href="../assets/icon-512.png">
+<link rel="stylesheet" href="../style.css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Find Every AI Config File on Your Mac">
+<meta property="og:description" content="Where 19 AI tools hide their config files, how to audit them by hand — and the faster way.">
+<meta property="og:url" content="https://desastre.app/guides/find-ai-config-files-mac.html">
+<meta property="og:image" content="https://desastre.app/assets/screenshot-1.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Find Every AI Config File on Your Mac",
+  "description": "A complete audit guide: where all 19 major AI coding tools store configuration on macOS, and how to inventory everything automatically.",
+  "image": "https://desastre.app/assets/screenshot-1.png",
+  "author": { "@type": "Person", "name": "Thais Rodríguez Coso" },
+  "publisher": { "@type": "Organization", "name": "Desastre", "logo": { "@type": "ImageObject", "url": "https://desastre.app/assets/icon-512.png" } },
+  "mainEntityOfPage": "https://desastre.app/guides/find-ai-config-files-mac.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Desastre", "item": "https://desastre.app/" },
+    { "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://desastre.app/#guides" },
+    { "@type": "ListItem", "position": 3, "name": "Find AI config files" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="wrap">
+  <nav class="nav" aria-label="Main">
+    <a class="brand" href="../index.html"><img src="../assets/icon-512.png" alt="Desastre app icon" width="36" height="36"> Desastre</a>
+    <div class="links">
+      <a href="../index.html#guides">Guides</a>
+      <a class="btn small" href="https://apps.apple.com/app/desastre-ai-config-manager/id6778777399">Get Desastre</a>
+    </div>
+  </nav>
+</header>
+
+<main class="article">
+  <p class="breadcrumb"><a href="../index.html">Home</a> / <a href="../index.html#guides">Guides</a> / Find AI config files</p>
+  <h1>How to find every AI config file on your Mac</h1>
+
+  <div class="quick-answer">
+    <strong>Quick answer:</strong> AI tool config lives in three kinds of places: hidden dot-folders in your home directory (<code>~/.claude/</code>, <code>~/.cursor/</code>, <code>~/.codex/</code>, ~16 more), Application Support (Claude Desktop, VS Code extension storage for Cline/Roo/Continue), and inside <em>every project you've ever opened</em> (<code>CLAUDE.md</code>, <code>.cursor/rules/</code>, <code>AGENTS.md</code>, <code>.mcp.json</code>…). A manual audit means checking all three layers for 19 tools. Or you open <a href="../index.html">Desastre</a> and it does the whole thing in seconds.
+  </div>
+
+  <h2>Layer 1: hidden dot-folders in your home directory</h2>
+  <p>Run <code>ls -d ~/.*/ | sort</code> and you'll find more AI residue than you expect. The main global locations:</p>
+  <table>
+    <tr><th>Tool</th><th>Global config root</th></tr>
+    <tr><td>Claude Code</td><td><code>~/.claude/</code> — plus <code>~/.claude.json</code> <em>outside</em> the folder (<a href="claude-code-config-location.html">details</a>)</td></tr>
+    <tr><td>Cursor</td><td><code>~/.cursor/</code> (<a href="cursor-rules-location.html">details</a>)</td></tr>
+    <tr><td>Windsurf</td><td><code>~/.windsurf/</code> <em>and</em> <code>~/.codeium/windsurf/</code> — two roots (<a href="windsurf-rules-location.html">details</a>)</td></tr>
+    <tr><td>Codex</td><td><code>~/.codex/</code> — plus newer skills in <code>~/.agents/skills/</code></td></tr>
+    <tr><td>GitHub Copilot CLI</td><td><code>~/.copilot/</code> (<a href="copilot-instructions-location.html">details</a>)</td></tr>
+    <tr><td>Gemini CLI + Antigravity</td><td><code>~/.gemini/</code> — shared, with a conflict (<a href="gemini-cli-config-location.html">details</a>)</td></tr>
+    <tr><td>Aider</td><td><code>~/.aider.conf.yml</code>, <code>~/.aider.model.settings.yml</code></td></tr>
+    <tr><td>Amp / OpenCode</td><td><code>~/.config/amp/</code>, <code>~/.config/opencode/</code> (moves with <code>$XDG_CONFIG_HOME</code>)</td></tr>
+    <tr><td>Continue.dev</td><td><code>~/.continue/</code></td></tr>
+    <tr><td>Cline / Roo Code</td><td><code>~/.cline-rules/</code>, <code>~/.roo/</code></td></tr>
+    <tr><td>Zed</td><td><code>~/.config/zed/</code></td></tr>
+    <tr><td>Augment / Hermes / OpenClaw / Pi</td><td><code>~/.augment/</code>, <code>~/.hermes/</code>, <code>~/.openclaw/</code>, <code>~/.pi/</code></td></tr>
+  </table>
+
+  <h2>Layer 2: Application Support</h2>
+  <ul>
+    <li><strong>Claude Desktop:</strong> <code>~/Library/Application Support/Claude/claude_desktop_config.json</code> — where your Claude Desktop MCP servers live.</li>
+    <li><strong>VS Code extensions</strong> (Cline, Roo Code, Continue): <code>~/Library/Application Support/Code/User/globalStorage/&lt;publisher&gt;.&lt;extension&gt;/</code> — MCP settings buried where nobody looks.</li>
+  </ul>
+
+  <h2>Layer 3: inside every project</h2>
+  <p>This is the layer a manual audit can't realistically cover. Each repo you've opened with an AI tool may contain any of: <code>CLAUDE.md</code>, <code>AGENTS.md</code>, <code>GEMINI.md</code>, <code>.claude/</code>, <code>.cursor/rules/</code>, <code>.cursorrules</code>, <code>.windsurfrules</code>, <code>.github/copilot-instructions.md</code>, <code>.mcp.json</code>, <code>.clinerules</code>, <code>.roo/</code>, <code>.aider.conf.yml</code>… multiplied by every project, experiment and one-off clone in your home folder. You could script it:</p>
+  <pre><code>find ~ -name "CLAUDE.md" -o -name "AGENTS.md" -o -name ".cursorrules" \
+  -o -name ".mcp.json" -o -name "GEMINI.md" 2>/dev/null</code></pre>
+  <p>…but that command misses the folder-based indicators, wades through <code>node_modules</code> copies of other people's files, tells you nothing about what's inside each hit, and you'll never run it twice.</p>
+
+  <h2>The one-click audit</h2>
+  <p><a href="../index.html">Desastre</a> is that audit as a native app. On launch it checks every known global path, then sweeps your home folder for all project-level indicators — skipping <code>node_modules</code>, <code>.git</code>, build caches and other noise — and shows the result as a Finder-style inventory:</p>
+  <ul>
+    <li>One row per skill, agent, rule, command and MCP server — with size, dates and the project it belongs to</li>
+    <li>Filter by tool, kind, or global-vs-project scope</li>
+    <li>Instant previews: rendered Markdown, syntax-highlighted JSON/TOML/YAML</li>
+    <li>Reveal on disk, move stale configs to Trash, or copy the good ones to another tool</li>
+  </ul>
+
+  <div class="shot-inline">
+    <img src="../assets/screenshot-1.png" alt="Desastre's full inventory: 76 AI config files across 3 projects and 5 tools, discovered automatically" width="1280" height="800" loading="lazy">
+  </div>
+
+  <p>Everything happens locally — Desastre never uploads your files, needs no account, and asks for a single home-folder grant on first launch. The scan that would take you an afternoon takes it seconds, and rescanning is one click, so the inventory stays true as your tools keep writing.</p>
+
+  <div class="app-cta">
+    <img class="icon" src="../assets/icon-512.png" alt="Desastre app icon" width="64" height="64">
+    <div class="body">
+      <h3>Desastre — AI config manager for Mac</h3>
+      <p>The complete AI config audit, automated. 19 tools, one window, $1.99 one time.</p>
+      <a class="btn small" href="https://apps.apple.com/app/desastre-ai-config-manager/id6778777399">Download on the Mac App Store</a>
+    </div>
+  </div>
+
+  <div class="related">
+    <h2>Related guides</h2>
+    <ul>
+      <li><a href="claude-code-config-location.html">Where does Claude Code store settings, skills and agents?</a></li>
+      <li><a href="mcp-config-locations.html">Where is MCP server config stored? Every tool's path</a></li>
+      <li><a href="convert-cursor-rules-to-claude-code.html">How to convert Cursor rules to Claude Code</a></li>
+    </ul>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap fineprint">
+    <span>© 2026 Thais Rodríguez Coso · <a href="../index.html">Desastre</a></span>
+    <span><a href="https://thaisrc.framer.ai/desastre/privacy-policy">Privacy</a> · <a href="https://thaisrc.framer.ai/contactForm">Contact</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
