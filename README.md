@@ -1,10 +1,10 @@
-# desastre.app
+# Desastre website
 
 Marketing site for **Desastre** — the AI config manager for Mac.
 [App Store](https://apps.apple.com/app/desastre-ai-config-manager/id6778777399)
 
-Static HTML/CSS, no build step. Served by GitHub Pages from the repo root at
-the custom domain **desastre.app** (see `CNAME`).
+Static HTML/CSS, no build step. Hosted free on GitHub Pages at
+**https://thais1771.github.io/desastre-website/**
 
 ## Structure
 
@@ -13,7 +13,6 @@ the custom domain **desastre.app** (see `CNAME`).
 - `assets/` — App Store icon + screenshots
 - `style.css` — shared styles
 - `sitemap.xml`, `robots.txt` — SEO
-- `CNAME` — custom domain for GitHub Pages
 - `.nojekyll` — serve files as-is, skip Jekyll processing
 
 ## Local preview
@@ -26,3 +25,7 @@ python3 -m http.server 8931
 ## Deploy
 
 Push to `main`. GitHub Pages (Settings → Pages → Source: `main` / root) publishes automatically.
+
+To move to a custom domain later: add a `CNAME` file with the domain, point DNS at
+GitHub's Pages IPs, and update the absolute URLs in `index.html`, `guides/*.html`,
+`sitemap.xml` and `robots.txt` from the github.io base to the new domain.

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://desastre.app/sitemap.xml
+Sitemap: https://thais1771.github.io/desastre-website/sitemap.xml
