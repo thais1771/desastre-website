@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>How to Convert Cursor Rules to Claude Code (No Scripts Required)</title>
 <meta name="description" content="Cursor .mdc rules use frontmatter Claude Code doesn't understand. Here's what actually changes between the formats, how to convert by hand, and how to move rules between Cursor and Claude Code in one click.">
-<link rel="canonical" href="https://thais1771.github.io/desastre-website/guides/convert-cursor-rules-to-claude-code.html">
-<link rel="icon" href="../assets/icon-512.png">
-<link rel="stylesheet" href="../style.css">
+<link rel="canonical" href="https://thais1771.github.io/desastre-website/guides/convert-cursor-rules-to-claude-code/">
+<link rel="icon" href="../../assets/icon-512.png">
+<link rel="stylesheet" href="../../style.css">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Convert Cursor Rules to Claude Code">
 <meta property="og:description" content="What changes between .mdc and Claude Code's format, and how to move rules across tools in one click.">
-<meta property="og:url" content="https://thais1771.github.io/desastre-website/guides/convert-cursor-rules-to-claude-code.html">
+<meta property="og:url" content="https://thais1771.github.io/desastre-website/guides/convert-cursor-rules-to-claude-code/">
 <meta property="og:image" content="https://thais1771.github.io/desastre-website/assets/screenshot-3.png">
 <script type="application/ld+json">
 {
@@ -22,7 +22,7 @@
   "image": "https://thais1771.github.io/desastre-website/assets/screenshot-3.png",
   "author": { "@type": "Person", "name": "Thais Rodríguez Coso" },
   "publisher": { "@type": "Organization", "name": "Desastre", "logo": { "@type": "ImageObject", "url": "https://thais1771.github.io/desastre-website/assets/icon-512.png" } },
-  "mainEntityOfPage": "https://thais1771.github.io/desastre-website/guides/convert-cursor-rules-to-claude-code.html"
+  "mainEntityOfPage": "https://thais1771.github.io/desastre-website/guides/convert-cursor-rules-to-claude-code/"
 }
 </script>
 <script type="application/ld+json">
@@ -42,20 +42,20 @@
 
 <header class="wrap">
   <nav class="nav" aria-label="Main">
-    <a class="brand" href="../index.html"><img src="../assets/icon-512.png" alt="Desastre app icon" width="36" height="36"> Desastre</a>
+    <a class="brand" href="../../"><img src="../../assets/icon-512.png" alt="Desastre app icon" width="36" height="36"> Desastre</a>
     <div class="links">
-      <a href="../index.html#guides">Guides</a>
+      <a href="../../#guides">Guides</a>
       <a class="btn small" href="https://apps.apple.com/app/desastre-ai-config-manager/id6778777399">Get Desastre</a>
     </div>
   </nav>
 </header>
 
 <main class="article">
-  <p class="breadcrumb"><a href="../index.html">Home</a> / <a href="../index.html#guides">Guides</a> / Convert Cursor rules to Claude Code</p>
+  <p class="breadcrumb"><a href="../../">Home</a> / <a href="../../#guides">Guides</a> / Convert Cursor rules to Claude Code</p>
   <h1>How to convert Cursor rules to Claude Code</h1>
 
   <div class="quick-answer">
-    <strong>Quick answer:</strong> A Cursor rule is Markdown with Cursor-specific frontmatter (<code>globs</code>, <code>alwaysApply</code>) and an <code>.mdc</code> extension. To convert one for Claude Code: strip those two frontmatter fields, change the extension to <code>.md</code>, and either merge the content into <code>CLAUDE.md</code> or save it as a skill. Or skip the manual work — <a href="../index.html">Desastre</a> does the conversion in one click.
+    <strong>Quick answer:</strong> A Cursor rule is Markdown with Cursor-specific frontmatter (<code>globs</code>, <code>alwaysApply</code>) and an <code>.mdc</code> extension. To convert one for Claude Code: strip those two frontmatter fields, change the extension to <code>.md</code>, and either merge the content into <code>CLAUDE.md</code> or save it as a skill. Or skip the manual work — <a href="../../">Desastre</a> does the conversion in one click.
   </div>
 
   <h2>Why the formats don't match</h2>
@@ -68,7 +68,7 @@
     <tr><td>Scoping</td><td><code>globs</code> frontmatter per rule</td><td>No glob scoping — instructions are always-on, skills load on demand</td></tr>
     <tr><td>Always-on switch</td><td><code>alwaysApply: true</code></td><td>Anything in <code>CLAUDE.md</code> is always on</td></tr>
   </table>
-  <p>So "conversion" is really a routing decision: an <code>alwaysApply</code> rule belongs in <code>CLAUDE.md</code>; a descriptive, situational rule maps naturally to a <a href="claude-code-config-location.html">Claude Code skill</a> with its <code>description</code> intact.</p>
+  <p>So "conversion" is really a routing decision: an <code>alwaysApply</code> rule belongs in <code>CLAUDE.md</code>; a descriptive, situational rule maps naturally to a <a href="../claude-code-config-location/">Claude Code skill</a> with its <code>description</code> intact.</p>
 
   <h2>Converting by hand</h2>
   <ol>
@@ -80,7 +80,7 @@
   <p>Step 4 is where this stops being a five-minute job. There are CLI tools (rule-porter, rulesync) that batch-convert a single repo, but they assume you remember which repos have rules worth converting in the first place.</p>
 
   <h2>Converting in one click with Desastre</h2>
-  <p><a href="../index.html">Desastre</a> handles both the finding and the converting:</p>
+  <p><a href="../../">Desastre</a> handles both the finding and the converting:</p>
   <ol>
     <li><strong>Scan.</strong> Desastre lists every Cursor rule on your machine — global and per-project, including repos you forgot about, even legacy <code>.cursorrules</code> files.</li>
     <li><strong>Pick.</strong> Preview any rule with its frontmatter rendered as a clean header.</li>
@@ -88,13 +88,13 @@
   </ol>
 
   <div class="shot-inline">
-    <img src="../assets/screenshot-3.png" alt="Desastre's Copy to tool sheet converting a config between AI tools, showing which destinations are ready and which have conflicts" width="1280" height="800" loading="lazy">
+    <img src="../../assets/screenshot-3.png" alt="Desastre's Copy to tool sheet converting a config between AI tools, showing which destinations are ready and which have conflicts" width="1280" height="800" loading="lazy">
   </div>
 
   <p>It works in the other direction too — Claude Code agents to Cursor, rules to Windsurf or Continue.dev — and the same one-click copy moves skills, agents, instructions and JSON-based MCP configs between 19 supported tools, always same-scope (global→global, project→project) so nothing leaks across repos.</p>
 
   <div class="app-cta">
-    <img class="icon" src="../assets/icon-512.png" alt="Desastre app icon" width="64" height="64">
+    <img class="icon" src="../../assets/icon-512.png" alt="Desastre app icon" width="64" height="64">
     <div class="body">
       <h3>Desastre — AI config manager for Mac</h3>
       <p>Find every rule you've written, then move it to any tool in one click. $1.99, one time — cheaper than the coffee you'd drink converting them by hand.</p>
@@ -105,16 +105,16 @@
   <div class="related">
     <h2>Related guides</h2>
     <ul>
-      <li><a href="cursor-rules-location.html">Where does Cursor store rules?</a></li>
-      <li><a href="what-is-claude-md.html">What is CLAUDE.md? Claude Code's memory file explained</a></li>
-      <li><a href="what-is-agents-md.html">What is AGENTS.md? The shared instruction standard</a></li>
+      <li><a href="../cursor-rules-location/">Where does Cursor store rules?</a></li>
+      <li><a href="../what-is-claude-md/">What is CLAUDE.md? Claude Code's memory file explained</a></li>
+      <li><a href="../what-is-agents-md/">What is AGENTS.md? The shared instruction standard</a></li>
     </ul>
   </div>
 </main>
 
 <footer>
   <div class="wrap fineprint">
-    <span>© 2026 Thais Rodríguez Coso · <a href="../index.html">Desastre</a></span>
+    <span>© 2026 Thais Rodríguez Coso · <a href="../../">Desastre</a></span>
     <span><a href="https://thaisrc.framer.ai/desastre/privacy-policy">Privacy</a> · <a href="https://thaisrc.framer.ai/contactForm">Contact</a></span>
   </div>
 </footer>

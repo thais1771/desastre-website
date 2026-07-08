@@ -102,7 +102,7 @@
 
 <header class="wrap">
   <nav class="nav" aria-label="Main">
-    <a class="brand" href="/"><img src="assets/icon-512.png" alt="Desastre app icon" width="36" height="36"> Desastre</a>
+    <a class="brand" href="./"><img src="assets/icon-512.png" alt="Desastre app icon" width="36" height="36"> Desastre</a>
     <div class="links">
       <a href="#screenshots">Screenshots</a>
       <a href="#how-it-works">How it works</a>
@@ -205,52 +205,52 @@
     <h2>Where does everything actually live?</h2>
     <p class="lede">The reference we wish existed when we built Desastre — exact paths, formats and gotchas for every major AI coding tool.</p>
     <div class="guides-grid">
-      <a class="guide-card" href="guides/claude-code-config-location.html">
+      <a class="guide-card" href="guides/claude-code-config-location/">
         <h3>Where does Claude Code store settings, skills and agents?</h3>
         <p>The full map of ~/.claude/ — and the one important file that lives outside it.</p>
         <span class="more">Read the guide →</span>
       </a>
-      <a class="guide-card" href="guides/cursor-rules-location.html">
+      <a class="guide-card" href="guides/cursor-rules-location/">
         <h3>Where does Cursor store rules?</h3>
         <p>.cursor/rules/ vs the legacy .cursorrules, the .mdc format, and where MCP config goes.</p>
         <span class="more">Read the guide →</span>
       </a>
-      <a class="guide-card" href="guides/mcp-config-locations.html">
+      <a class="guide-card" href="guides/mcp-config-locations/">
         <h3>Where is MCP server config stored? Every tool's path</h3>
         <p>13 tools, 13 different files and key names. The complete MCP config location table.</p>
         <span class="more">Read the guide →</span>
       </a>
-      <a class="guide-card" href="guides/convert-cursor-rules-to-claude-code.html">
+      <a class="guide-card" href="guides/convert-cursor-rules-to-claude-code/">
         <h3>How to convert Cursor rules to Claude Code</h3>
         <p>What changes between .mdc and CLAUDE.md-world, and how to move rules in one click.</p>
         <span class="more">Read the guide →</span>
       </a>
-      <a class="guide-card" href="guides/what-is-agents-md.html">
+      <a class="guide-card" href="guides/what-is-agents-md/">
         <h3>What is AGENTS.md?</h3>
         <p>The open standard instruction file 60,000+ repos use — which tools read it and where it goes.</p>
         <span class="more">Read the guide →</span>
       </a>
-      <a class="guide-card" href="guides/what-is-claude-md.html">
+      <a class="guide-card" href="guides/what-is-claude-md/">
         <h3>What is CLAUDE.md?</h3>
         <p>Claude Code's memory file: global vs project vs local, and how the layers combine.</p>
         <span class="more">Read the guide →</span>
       </a>
-      <a class="guide-card" href="guides/copilot-instructions-location.html">
+      <a class="guide-card" href="guides/copilot-instructions-location/">
         <h3>Where does GitHub Copilot store custom instructions?</h3>
         <p>copilot-instructions.md, .github/instructions/, agents and MCP — the full Copilot map.</p>
         <span class="more">Read the guide →</span>
       </a>
-      <a class="guide-card" href="guides/windsurf-rules-location.html">
+      <a class="guide-card" href="guides/windsurf-rules-location/">
         <h3>Where does Windsurf store rules and config?</h3>
         <p>Windsurf splits config across two hidden folders. Here's both halves.</p>
         <span class="more">Read the guide →</span>
       </a>
-      <a class="guide-card" href="guides/gemini-cli-config-location.html">
+      <a class="guide-card" href="guides/gemini-cli-config-location/">
         <h3>Where do Gemini CLI and Antigravity store config?</h3>
         <p>GEMINI.md, ~/.gemini/, and the shared-folder conflict that can eat your instructions.</p>
         <span class="more">Read the guide →</span>
       </a>
-      <a class="guide-card" href="guides/find-ai-config-files-mac.html">
+      <a class="guide-card" href="guides/find-ai-config-files-mac/">
         <h3>How to find every AI config file on your Mac</h3>
         <p>Where 19 tools hide their files, how to audit them by hand — and the faster way.</p>
         <span class="more">Read the guide →</span>
@@ -267,31 +267,31 @@
     <div class="faq">
       <details>
         <summary>Where does Claude Code store its settings and skills?</summary>
-        <p>Global config lives under <code>~/.claude/</code> — skills in <code>~/.claude/skills/</code>, agents in <code>~/.claude/agents/</code>, instructions in <code>~/.claude/CLAUDE.md</code>. The catch: MCP servers live in <code>~/.claude.json</code>, <em>outside</em> the folder. <a href="guides/claude-code-config-location.html">Learn more →</a></p>
+        <p>Global config lives under <code>~/.claude/</code> — skills in <code>~/.claude/skills/</code>, agents in <code>~/.claude/agents/</code>, instructions in <code>~/.claude/CLAUDE.md</code>. The catch: MCP servers live in <code>~/.claude.json</code>, <em>outside</em> the folder. <a href="guides/claude-code-config-location/">Learn more →</a></p>
       </details>
       <details>
         <summary>Where does Cursor store its rules?</summary>
-        <p>Global rules are <code>.mdc</code> files in <code>~/.cursor/rules/</code>; each project keeps its own <code>.cursor/rules/</code> folder. Older repos may still use the legacy <code>.cursorrules</code> file. <a href="guides/cursor-rules-location.html">Learn more →</a></p>
+        <p>Global rules are <code>.mdc</code> files in <code>~/.cursor/rules/</code>; each project keeps its own <code>.cursor/rules/</code> folder. Older repos may still use the legacy <code>.cursorrules</code> file. <a href="guides/cursor-rules-location/">Learn more →</a></p>
       </details>
       <details>
         <summary>Where is my MCP server configuration stored?</summary>
-        <p>Everywhere, unfortunately — every tool picks a different file and a different key name. Claude Code uses <code>~/.claude.json</code>, Codex uses TOML, Zed calls the key <code>context_servers</code>. <a href="guides/mcp-config-locations.html">Learn more →</a></p>
+        <p>Everywhere, unfortunately — every tool picks a different file and a different key name. Claude Code uses <code>~/.claude.json</code>, Codex uses TOML, Zed calls the key <code>context_servers</code>. <a href="guides/mcp-config-locations/">Learn more →</a></p>
       </details>
       <details>
         <summary>What is AGENTS.md?</summary>
-        <p>The open, Linux Foundation-backed standard for AI agent project instructions, used in 60,000+ repositories and read by Codex, Cursor, Windsurf, Amp, Zed and more. <a href="guides/what-is-agents-md.html">Learn more →</a></p>
+        <p>The open, Linux Foundation-backed standard for AI agent project instructions, used in 60,000+ repositories and read by Codex, Cursor, Windsurf, Amp, Zed and more. <a href="guides/what-is-agents-md/">Learn more →</a></p>
       </details>
       <details>
         <summary>What is CLAUDE.md?</summary>
-        <p>Claude Code's memory file — instructions it loads automatically every session. There's a global one, a per-project one, and a git-ignored local one, and they stack. <a href="guides/what-is-claude-md.html">Learn more →</a></p>
+        <p>Claude Code's memory file — instructions it loads automatically every session. There's a global one, a per-project one, and a git-ignored local one, and they stack. <a href="guides/what-is-claude-md/">Learn more →</a></p>
       </details>
       <details>
         <summary>Can I convert Cursor rules to Claude Code?</summary>
-        <p>Yes — and you don't need a CLI script. Desastre's "Copy to tool…" converts the <code>.mdc</code> format, adjusts the frontmatter, and writes the file where Claude Code expects it. <a href="guides/convert-cursor-rules-to-claude-code.html">Learn more →</a></p>
+        <p>Yes — and you don't need a CLI script. Desastre's "Copy to tool…" converts the <code>.mdc</code> format, adjusts the frontmatter, and writes the file where Claude Code expects it. <a href="guides/convert-cursor-rules-to-claude-code/">Learn more →</a></p>
       </details>
       <details>
         <summary>How do I find every AI config file on my Mac?</summary>
-        <p>By hand: check ~19 dot-folders, Application Support, and every repo you've ever cloned. Or open Desastre and let it scan your home folder in seconds. <a href="guides/find-ai-config-files-mac.html">Learn more →</a></p>
+        <p>By hand: check ~19 dot-folders, Application Support, and every repo you've ever cloned. Or open Desastre and let it scan your home folder in seconds. <a href="guides/find-ai-config-files-mac/">Learn more →</a></p>
       </details>
       <details>
         <summary>Does Desastre upload my config files anywhere?</summary>
@@ -369,11 +369,11 @@
       <div>
         <h4>Guides</h4>
         <ul>
-          <li><a href="guides/claude-code-config-location.html">Claude Code config</a></li>
-          <li><a href="guides/cursor-rules-location.html">Cursor rules</a></li>
-          <li><a href="guides/mcp-config-locations.html">MCP config locations</a></li>
-          <li><a href="guides/what-is-agents-md.html">AGENTS.md</a></li>
-          <li><a href="guides/find-ai-config-files-mac.html">Find AI configs</a></li>
+          <li><a href="guides/claude-code-config-location/">Claude Code config</a></li>
+          <li><a href="guides/cursor-rules-location/">Cursor rules</a></li>
+          <li><a href="guides/mcp-config-locations/">MCP config locations</a></li>
+          <li><a href="guides/what-is-agents-md/">AGENTS.md</a></li>
+          <li><a href="guides/find-ai-config-files-mac/">Find AI configs</a></li>
         </ul>
       </div>
       <div>

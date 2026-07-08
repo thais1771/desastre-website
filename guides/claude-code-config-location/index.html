@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Where Does Claude Code Store Settings, Skills and Agents? (Complete Map)</title>
 <meta name="description" content="Claude Code keeps skills, agents and CLAUDE.md under ~/.claude/ — but MCP config lives in ~/.claude.json, outside the folder. The complete map of every Claude Code config location on your Mac.">
-<link rel="canonical" href="https://thais1771.github.io/desastre-website/guides/claude-code-config-location.html">
-<link rel="icon" href="../assets/icon-512.png">
-<link rel="stylesheet" href="../style.css">
+<link rel="canonical" href="https://thais1771.github.io/desastre-website/guides/claude-code-config-location/">
+<link rel="icon" href="../../assets/icon-512.png">
+<link rel="stylesheet" href="../../style.css">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Where Does Claude Code Store Settings, Skills and Agents?">
 <meta property="og:description" content="The complete map of every Claude Code config location — including the one file that lives outside ~/.claude/.">
-<meta property="og:url" content="https://thais1771.github.io/desastre-website/guides/claude-code-config-location.html">
+<meta property="og:url" content="https://thais1771.github.io/desastre-website/guides/claude-code-config-location/">
 <meta property="og:image" content="https://thais1771.github.io/desastre-website/assets/screenshot-1.png">
 <script type="application/ld+json">
 {
@@ -22,7 +22,7 @@
   "image": "https://thais1771.github.io/desastre-website/assets/screenshot-1.png",
   "author": { "@type": "Person", "name": "Thais Rodríguez Coso" },
   "publisher": { "@type": "Organization", "name": "Desastre", "logo": { "@type": "ImageObject", "url": "https://thais1771.github.io/desastre-website/assets/icon-512.png" } },
-  "mainEntityOfPage": "https://thais1771.github.io/desastre-website/guides/claude-code-config-location.html"
+  "mainEntityOfPage": "https://thais1771.github.io/desastre-website/guides/claude-code-config-location/"
 }
 </script>
 <script type="application/ld+json">
@@ -41,16 +41,16 @@
 
 <header class="wrap">
   <nav class="nav" aria-label="Main">
-    <a class="brand" href="../index.html"><img src="../assets/icon-512.png" alt="Desastre app icon" width="36" height="36"> Desastre</a>
+    <a class="brand" href="../../"><img src="../../assets/icon-512.png" alt="Desastre app icon" width="36" height="36"> Desastre</a>
     <div class="links">
-      <a href="../index.html#guides">Guides</a>
+      <a href="../../#guides">Guides</a>
       <a class="btn small" href="https://apps.apple.com/app/desastre-ai-config-manager/id6778777399">Get Desastre</a>
     </div>
   </nav>
 </header>
 
 <main class="article">
-  <p class="breadcrumb"><a href="../index.html">Home</a> / <a href="../index.html#guides">Guides</a> / Claude Code config location</p>
+  <p class="breadcrumb"><a href="../../">Home</a> / <a href="../../#guides">Guides</a> / Claude Code config location</p>
   <h1>Where does Claude Code store settings, skills and agents?</h1>
 
   <div class="quick-answer">
@@ -92,15 +92,15 @@
   <p>Claude Code merges settings from lowest to highest precedence: user <code>~/.claude/settings.json</code> → project <code>.claude/settings.json</code> → project <code>.claude/settings.local.json</code> → CLI flags. Skills, agents and commands are additive: global ones are available everywhere, and project ones ride along with the repo. That's tidy in theory — in practice, after a few months you have skills in your home folder, skills in a dozen repos, and no memory of which is which.</p>
 
   <div class="shot-inline">
-    <img src="../assets/screenshot-1.png" alt="Desastre showing every Claude Code skill, agent, rule and MCP server — global and per-project — in one window" width="1280" height="800" loading="lazy">
+    <img src="../../assets/screenshot-1.png" alt="Desastre showing every Claude Code skill, agent, rule and MCP server — global and per-project — in one window" width="1280" height="800" loading="lazy">
   </div>
 
   <h2>See all of it at once, instead of spelunking</h2>
-  <p>You can <code>ls -la ~/.claude/</code> and grep your way through every repo — or you can see the whole picture in one window. <a href="../index.html">Desastre</a> scans your machine and lists every Claude Code skill, agent, command, CLAUDE.md and MCP server it finds — global and per-project, including <code>~/.claude.json</code> and configs in repos you forgot existed. Each item previews instantly with rendered Markdown, and one click reveals it on disk.</p>
+  <p>You can <code>ls -la ~/.claude/</code> and grep your way through every repo — or you can see the whole picture in one window. <a href="../../">Desastre</a> scans your machine and lists every Claude Code skill, agent, command, CLAUDE.md and MCP server it finds — global and per-project, including <code>~/.claude.json</code> and configs in repos you forgot existed. Each item previews instantly with rendered Markdown, and one click reveals it on disk.</p>
   <p>It also tags each file with every <em>other</em> tool that can read it — so when a skill in <code>.agents/skills/</code> is visible to both Codex and Amp, you know before you edit it.</p>
 
   <div class="app-cta">
-    <img class="icon" src="../assets/icon-512.png" alt="Desastre app icon" width="64" height="64">
+    <img class="icon" src="../../assets/icon-512.png" alt="Desastre app icon" width="64" height="64">
     <div class="body">
       <h3>Desastre — AI config manager for Mac</h3>
       <p>Every Claude Code config on your machine, plus 18 other tools, in one native window. $1.99, one time.</p>
@@ -111,16 +111,16 @@
   <div class="related">
     <h2>Related guides</h2>
     <ul>
-      <li><a href="what-is-claude-md.html">What is CLAUDE.md? Claude Code's memory file explained</a></li>
-      <li><a href="mcp-config-locations.html">Where is MCP server config stored? Every tool's path</a></li>
-      <li><a href="convert-cursor-rules-to-claude-code.html">How to convert Cursor rules to Claude Code</a></li>
+      <li><a href="../what-is-claude-md/">What is CLAUDE.md? Claude Code's memory file explained</a></li>
+      <li><a href="../mcp-config-locations/">Where is MCP server config stored? Every tool's path</a></li>
+      <li><a href="../convert-cursor-rules-to-claude-code/">How to convert Cursor rules to Claude Code</a></li>
     </ul>
   </div>
 </main>
 
 <footer>
   <div class="wrap fineprint">
-    <span>© 2026 Thais Rodríguez Coso · <a href="../index.html">Desastre</a></span>
+    <span>© 2026 Thais Rodríguez Coso · <a href="../../">Desastre</a></span>
     <span><a href="https://thaisrc.framer.ai/desastre/privacy-policy">Privacy</a> · <a href="https://thaisrc.framer.ai/contactForm">Contact</a></span>
   </div>
 </footer>

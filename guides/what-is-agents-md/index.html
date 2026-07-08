@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>What Is AGENTS.md? The Standard AI Instruction File Explained</title>
 <meta name="description" content="AGENTS.md is the open, Linux Foundation-backed standard file for giving AI coding agents project instructions — used in 60,000+ repos and read by Codex, Cursor, Windsurf, Amp, Zed and more. What it is, where it goes, and how it relates to CLAUDE.md.">
-<link rel="canonical" href="https://thais1771.github.io/desastre-website/guides/what-is-agents-md.html">
-<link rel="icon" href="../assets/icon-512.png">
-<link rel="stylesheet" href="../style.css">
+<link rel="canonical" href="https://thais1771.github.io/desastre-website/guides/what-is-agents-md/">
+<link rel="icon" href="../../assets/icon-512.png">
+<link rel="stylesheet" href="../../style.css">
 <meta property="og:type" content="article">
 <meta property="og:title" content="What Is AGENTS.md?">
 <meta property="og:description" content="The open standard instruction file for AI coding agents — which tools read it, where it lives, and how it relates to CLAUDE.md and GEMINI.md.">
-<meta property="og:url" content="https://thais1771.github.io/desastre-website/guides/what-is-agents-md.html">
+<meta property="og:url" content="https://thais1771.github.io/desastre-website/guides/what-is-agents-md/">
 <meta property="og:image" content="https://thais1771.github.io/desastre-website/assets/screenshot-1.png">
 <script type="application/ld+json">
 {
@@ -22,7 +22,7 @@
   "image": "https://thais1771.github.io/desastre-website/assets/screenshot-1.png",
   "author": { "@type": "Person", "name": "Thais Rodríguez Coso" },
   "publisher": { "@type": "Organization", "name": "Desastre", "logo": { "@type": "ImageObject", "url": "https://thais1771.github.io/desastre-website/assets/icon-512.png" } },
-  "mainEntityOfPage": "https://thais1771.github.io/desastre-website/guides/what-is-agents-md.html"
+  "mainEntityOfPage": "https://thais1771.github.io/desastre-website/guides/what-is-agents-md/"
 }
 </script>
 <script type="application/ld+json">
@@ -41,16 +41,16 @@
 
 <header class="wrap">
   <nav class="nav" aria-label="Main">
-    <a class="brand" href="../index.html"><img src="../assets/icon-512.png" alt="Desastre app icon" width="36" height="36"> Desastre</a>
+    <a class="brand" href="../../"><img src="../../assets/icon-512.png" alt="Desastre app icon" width="36" height="36"> Desastre</a>
     <div class="links">
-      <a href="../index.html#guides">Guides</a>
+      <a href="../../#guides">Guides</a>
       <a class="btn small" href="https://apps.apple.com/app/desastre-ai-config-manager/id6778777399">Get Desastre</a>
     </div>
   </nav>
 </header>
 
 <main class="article">
-  <p class="breadcrumb"><a href="../index.html">Home</a> / <a href="../index.html#guides">Guides</a> / What is AGENTS.md</p>
+  <p class="breadcrumb"><a href="../../">Home</a> / <a href="../../#guides">Guides</a> / What is AGENTS.md</p>
   <h1>What is AGENTS.md?</h1>
 
   <div class="quick-answer">
@@ -85,23 +85,23 @@ pnpm install && pnpm dev
   <table>
     <tr><th>Tool</th><th>Native instruction file</th></tr>
     <tr><td>Codex, Cursor, Windsurf, Aider, Amp, Augment, OpenCode, Continue, Cline, Roo Code, Zed</td><td><code>AGENTS.md</code></td></tr>
-    <tr><td>Claude Code</td><td><code>CLAUDE.md</code> (<a href="what-is-claude-md.html">explained here</a>)</td></tr>
-    <tr><td>GitHub Copilot</td><td><code>.github/copilot-instructions.md</code> (<a href="copilot-instructions-location.html">explained here</a>) — also reads <code>AGENTS.md</code></td></tr>
-    <tr><td>Gemini CLI / Antigravity</td><td><code>GEMINI.md</code> (<a href="gemini-cli-config-location.html">explained here</a>)</td></tr>
+    <tr><td>Claude Code</td><td><code>CLAUDE.md</code> (<a href="../what-is-claude-md/">explained here</a>)</td></tr>
+    <tr><td>GitHub Copilot</td><td><code>.github/copilot-instructions.md</code> (<a href="../copilot-instructions-location/">explained here</a>) — also reads <code>AGENTS.md</code></td></tr>
+    <tr><td>Gemini CLI / Antigravity</td><td><code>GEMINI.md</code> (<a href="../gemini-cli-config-location/">explained here</a>)</td></tr>
   </table>
   <p>The content of all four files is functionally identical — the difference is literally the filename. Which means keeping them in sync across tools is a renaming chore.</p>
 
   <h2>Track every instruction file you have</h2>
-  <p>After a year of AI-assisted work, you'll have an <code>AGENTS.md</code> here, a <code>CLAUDE.md</code> there, and no idea which repos say what. <a href="../index.html">Desastre</a> scans your machine and lists every instruction file — <code>AGENTS.md</code>, <code>CLAUDE.md</code>, <code>GEMINI.md</code>, <code>copilot-instructions.md</code> — with the project it belongs to and every tool that can read it. Because <code>AGENTS.md</code> is multi-tool by design, Desastre tags each one with all matching tools instead of guessing.</p>
+  <p>After a year of AI-assisted work, you'll have an <code>AGENTS.md</code> here, a <code>CLAUDE.md</code> there, and no idea which repos say what. <a href="../../">Desastre</a> scans your machine and lists every instruction file — <code>AGENTS.md</code>, <code>CLAUDE.md</code>, <code>GEMINI.md</code>, <code>copilot-instructions.md</code> — with the project it belongs to and every tool that can read it. Because <code>AGENTS.md</code> is multi-tool by design, Desastre tags each one with all matching tools instead of guessing.</p>
 
   <div class="shot-inline">
-    <img src="../assets/screenshot-1.png" alt="Desastre showing an AGENTS.md instruction file tagged with both Codex and Copilot, previewed with rendered Markdown" width="1280" height="800" loading="lazy">
+    <img src="../../assets/screenshot-1.png" alt="Desastre showing an AGENTS.md instruction file tagged with both Codex and Copilot, previewed with rendered Markdown" width="1280" height="800" loading="lazy">
   </div>
 
   <p>And when a tool needs its own filename, the <em>"Copy to tool…"</em> button does the rename for you: a <code>CLAUDE.md</code> becomes an <code>AGENTS.md</code> for Codex, or vice versa, in one click — same content, correct filename, never overwriting an existing file.</p>
 
   <div class="app-cta">
-    <img class="icon" src="../assets/icon-512.png" alt="Desastre app icon" width="64" height="64">
+    <img class="icon" src="../../assets/icon-512.png" alt="Desastre app icon" width="64" height="64">
     <div class="body">
       <h3>Desastre — AI config manager for Mac</h3>
       <p>Every AGENTS.md, CLAUDE.md and GEMINI.md on your machine, in one window — with one-click conversion between them. $1.99, one time.</p>
@@ -112,16 +112,16 @@ pnpm install && pnpm dev
   <div class="related">
     <h2>Related guides</h2>
     <ul>
-      <li><a href="what-is-claude-md.html">What is CLAUDE.md? Claude Code's memory file explained</a></li>
-      <li><a href="copilot-instructions-location.html">Where does GitHub Copilot store custom instructions?</a></li>
-      <li><a href="gemini-cli-config-location.html">Where do Gemini CLI and Antigravity store config?</a></li>
+      <li><a href="../what-is-claude-md/">What is CLAUDE.md? Claude Code's memory file explained</a></li>
+      <li><a href="../copilot-instructions-location/">Where does GitHub Copilot store custom instructions?</a></li>
+      <li><a href="../gemini-cli-config-location/">Where do Gemini CLI and Antigravity store config?</a></li>
     </ul>
   </div>
 </main>
 
 <footer>
   <div class="wrap fineprint">
-    <span>© 2026 Thais Rodríguez Coso · <a href="../index.html">Desastre</a></span>
+    <span>© 2026 Thais Rodríguez Coso · <a href="../../">Desastre</a></span>
     <span><a href="https://thaisrc.framer.ai/desastre/privacy-policy">Privacy</a> · <a href="https://thaisrc.framer.ai/contactForm">Contact</a></span>
   </div>
 </footer>

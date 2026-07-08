@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Where Do Gemini CLI and Antigravity Store Config? GEMINI.md Explained</title>
 <meta name="description" content="Gemini CLI and Google Antigravity both use ~/.gemini/ — and both read GEMINI.md, which means they can clobber each other's instructions. Every path both tools use, and how to spot the conflict.">
-<link rel="canonical" href="https://thais1771.github.io/desastre-website/guides/gemini-cli-config-location.html">
-<link rel="icon" href="../assets/icon-512.png">
-<link rel="stylesheet" href="../style.css">
+<link rel="canonical" href="https://thais1771.github.io/desastre-website/guides/gemini-cli-config-location/">
+<link rel="icon" href="../../assets/icon-512.png">
+<link rel="stylesheet" href="../../style.css">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Where Do Gemini CLI and Antigravity Store Config?">
 <meta property="og:description" content="GEMINI.md, ~/.gemini/, and the shared-folder conflict between Gemini CLI and Antigravity explained.">
-<meta property="og:url" content="https://thais1771.github.io/desastre-website/guides/gemini-cli-config-location.html">
+<meta property="og:url" content="https://thais1771.github.io/desastre-website/guides/gemini-cli-config-location/">
 <meta property="og:image" content="https://thais1771.github.io/desastre-website/assets/screenshot-1.png">
 <script type="application/ld+json">
 {
@@ -22,7 +22,7 @@
   "image": "https://thais1771.github.io/desastre-website/assets/screenshot-1.png",
   "author": { "@type": "Person", "name": "Thais Rodríguez Coso" },
   "publisher": { "@type": "Organization", "name": "Desastre", "logo": { "@type": "ImageObject", "url": "https://thais1771.github.io/desastre-website/assets/icon-512.png" } },
-  "mainEntityOfPage": "https://thais1771.github.io/desastre-website/guides/gemini-cli-config-location.html"
+  "mainEntityOfPage": "https://thais1771.github.io/desastre-website/guides/gemini-cli-config-location/"
 }
 </script>
 <script type="application/ld+json">
@@ -41,16 +41,16 @@
 
 <header class="wrap">
   <nav class="nav" aria-label="Main">
-    <a class="brand" href="../index.html"><img src="../assets/icon-512.png" alt="Desastre app icon" width="36" height="36"> Desastre</a>
+    <a class="brand" href="../../"><img src="../../assets/icon-512.png" alt="Desastre app icon" width="36" height="36"> Desastre</a>
     <div class="links">
-      <a href="../index.html#guides">Guides</a>
+      <a href="../../#guides">Guides</a>
       <a class="btn small" href="https://apps.apple.com/app/desastre-ai-config-manager/id6778777399">Get Desastre</a>
     </div>
   </nav>
 </header>
 
 <main class="article">
-  <p class="breadcrumb"><a href="../index.html">Home</a> / <a href="../index.html#guides">Guides</a> / Gemini CLI &amp; Antigravity config</p>
+  <p class="breadcrumb"><a href="../../">Home</a> / <a href="../../#guides">Guides</a> / Gemini CLI &amp; Antigravity config</p>
   <h1>Where do Gemini CLI and Antigravity store config?</h1>
 
   <div class="quick-answer">
@@ -82,14 +82,14 @@
   <p>If you use both, treat <code>GEMINI.md</code> as shared territory: keep it tool-neutral, and put tool-specific behavior in each tool's own settings.</p>
 
   <div class="shot-inline">
-    <img src="../assets/screenshot-1.png" alt="Desastre inventory tagging a GEMINI.md file with both Gemini CLI and Antigravity, making the shared-file conflict visible" width="1280" height="800" loading="lazy">
+    <img src="../../assets/screenshot-1.png" alt="Desastre inventory tagging a GEMINI.md file with both Gemini CLI and Antigravity, making the shared-file conflict visible" width="1280" height="800" loading="lazy">
   </div>
 
   <h2>Make the conflict visible</h2>
-  <p><a href="../index.html">Desastre</a> scans <code>~/.gemini/</code> and every project's <code>GEMINI.md</code>, and tags shared files with <em>every</em> tool that reads them — so the CLI/Antigravity overlap is visible instead of silent. You see each file's last-modified date (useful for spotting "wait, what rewrote this?"), preview the contents rendered, and keep Antigravity's skills and MCP config in the same inventory as your Claude Code, Cursor and Copilot files.</p>
+  <p><a href="../../">Desastre</a> scans <code>~/.gemini/</code> and every project's <code>GEMINI.md</code>, and tags shared files with <em>every</em> tool that reads them — so the CLI/Antigravity overlap is visible instead of silent. You see each file's last-modified date (useful for spotting "wait, what rewrote this?"), preview the contents rendered, and keep Antigravity's skills and MCP config in the same inventory as your Claude Code, Cursor and Copilot files.</p>
 
   <div class="app-cta">
-    <img class="icon" src="../assets/icon-512.png" alt="Desastre app icon" width="64" height="64">
+    <img class="icon" src="../../assets/icon-512.png" alt="Desastre app icon" width="64" height="64">
     <div class="body">
       <h3>Desastre — AI config manager for Mac</h3>
       <p>GEMINI.md, Antigravity skills, and configs from 17 more tools — one native window, conflicts made visible. $1.99, one time.</p>
@@ -100,16 +100,16 @@
   <div class="related">
     <h2>Related guides</h2>
     <ul>
-      <li><a href="what-is-agents-md.html">What is AGENTS.md? The shared instruction standard</a></li>
-      <li><a href="mcp-config-locations.html">Where is MCP server config stored? Every tool's path</a></li>
-      <li><a href="find-ai-config-files-mac.html">How to find every AI config file on your Mac</a></li>
+      <li><a href="../what-is-agents-md/">What is AGENTS.md? The shared instruction standard</a></li>
+      <li><a href="../mcp-config-locations/">Where is MCP server config stored? Every tool's path</a></li>
+      <li><a href="../find-ai-config-files-mac/">How to find every AI config file on your Mac</a></li>
     </ul>
   </div>
 </main>
 
 <footer>
   <div class="wrap fineprint">
-    <span>© 2026 Thais Rodríguez Coso · <a href="../index.html">Desastre</a></span>
+    <span>© 2026 Thais Rodríguez Coso · <a href="../../">Desastre</a></span>
     <span><a href="https://thaisrc.framer.ai/desastre/privacy-policy">Privacy</a> · <a href="https://thaisrc.framer.ai/contactForm">Contact</a></span>
   </div>
 </footer>
