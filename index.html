@@ -103,7 +103,12 @@
 <header class="wrap">
   <nav class="nav" aria-label="Main">
     <a class="brand" href="./"><img src="assets/icon-512.png" alt="Desastre app icon" width="36" height="36"> Desastre</a>
-    <div class="links">
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+    <div class="links" id="navLinks">
       <a href="#screenshots">Screenshots</a>
       <a href="#how-it-works">How it works</a>
       <a href="#guides">Guides</a>
@@ -346,6 +351,24 @@
   box.addEventListener('click', close);
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') close();
+  });
+})();
+
+(function () {
+  var toggle = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  if (!toggle || !links) return;
+  function setOpen(open) {
+    links.classList.toggle('open', open);
+    toggle.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  toggle.addEventListener('click', function () {
+    setOpen(!links.classList.contains('open'));
+  });
+  // Close the menu after tapping a link
+  links.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () { setOpen(false); });
   });
 })();
 </script>

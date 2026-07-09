@@ -59,6 +59,19 @@ pre code { background: none; border: none; color: inherit; padding: 0; white-spa
 .btn.ghost { background: transparent; color: var(--accent-deep) !important; border: 1.5px solid var(--accent); }
 .btn.ghost:hover { background: var(--accent-soft); }
 
+/* Hamburger toggle — hidden on desktop, shown on mobile via media query */
+.nav-toggle {
+  display: none; margin-left: auto;
+  width: 44px; height: 44px; padding: 0;
+  flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+  background: var(--bg-card); border: 1px solid var(--line); border-radius: 11px;
+  cursor: pointer;
+}
+.nav-toggle-bar { width: 20px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform .2s ease, opacity .2s ease; }
+.nav-toggle.open .nav-toggle-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.open .nav-toggle-bar:nth-child(2) { opacity: 0; }
+.nav-toggle.open .nav-toggle-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
 /* ---------- Hero ---------- */
 .hero { padding: 64px 0 30px; text-align: center; }
 .hero .eyebrow {
@@ -201,3 +214,34 @@ footer .fineprint { margin-top: 40px; padding-top: 20px; border-top: 1px solid v
 .related h2 { font-size: 20px; margin: 0 0 16px; }
 .related ul { list-style: none; margin-left: 0; }
 .related li { margin-bottom: 10px; }
+
+/* ---------- Mobile (phones) ---------- */
+@media (max-width: 720px) {
+  /* Nav → hamburger menu (only on pages that have a toggle, i.e. the homepage;
+     guide pages have a short 2-link nav that stays inline) */
+  .nav:has(.nav-toggle) { flex-wrap: wrap; }
+  .nav-toggle { display: flex; }
+  .nav:has(.nav-toggle) .links {
+    display: none; order: 3;
+    width: 100%; margin-left: 0;
+    flex-direction: column; align-items: stretch; gap: 0;
+    padding: 6px 0 4px;
+  }
+  .nav:has(.nav-toggle) .links.open { display: flex; }
+  .nav:has(.nav-toggle) .links a { padding: 13px 2px; font-size: 16px; border-top: 1px solid var(--line); }
+  .nav:has(.nav-toggle) .links a.btn { margin-top: 12px; text-align: center; border-top: none; }
+}
+
+@media (max-width: 640px) {
+  .wrap { padding: 0 18px; }
+  section { padding: 48px 0; }
+  .hero { padding: 36px 0 18px; }
+  .hero-shot { margin-top: 36px; }
+  .shots { gap: 40px; }
+  .cta-final { padding: 48px 22px; margin: 0 18px; }
+  .cta-final h2 { font-size: clamp(24px, 7vw, 32px); }
+  .step { padding: 22px 20px; }
+  .guide-card { padding: 20px 22px; }
+  .faq details { padding: 0 20px; }
+  .article { padding: 28px 18px 56px; }
+}
