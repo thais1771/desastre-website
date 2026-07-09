@@ -24,6 +24,9 @@ Key facts:
 ## Main pages
 
 - [Homepage](https://desastre.app/): What Desastre does, screenshots, how it works, FAQ.
+- [AI config manager](https://desastre.app/ai-config-manager/): Find, preview, clean up and copy configs between 19 AI tools in one window.
+- [AI config scanner for Mac](https://desastre.app/ai-config-scanner-mac/): Scan your whole Mac for every AI tool config file and see them in one window.
+- [Find MCP servers on Mac](https://desastre.app/find-mcp-servers-mac/): List every configured MCP server across all your AI tools in one window.
 - [Pricing](https://desastre.app/pricing.md): Machine-readable pricing ($1.99 one-time).
 
 ## Guides (AI tool config locations reference)

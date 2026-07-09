@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Find Every MCP Server on Your Mac — One Window | Desastre</title>
+<meta name="description" content="MCP server config is spread across ~/.claude.json, Claude Desktop, VS Code extension storage and per-project .mcp.json files. Desastre finds every MCP server on your Mac and lists them in one native window. 100% local. $1.99.">
+<link rel="canonical" href="https://desastre.app/find-mcp-servers-mac/">
+<link rel="icon" href="../assets/icon-512.png">
+<link rel="stylesheet" href="../style.css">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Find Every MCP Server on Your Mac">
+<meta property="og:description" content="MCP config hides in a dozen places. Desastre lists every MCP server across all your AI tools in one window. 100% local, $1.99 one time.">
+<meta property="og:url" content="https://desastre.app/find-mcp-servers-mac/">
+<meta property="og:image" content="https://desastre.app/assets/screenshot-1.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Desastre — Find MCP Servers on Mac",
+  "operatingSystem": "macOS 26.0 or later",
+  "applicationCategory": "DeveloperApplication",
+  "description": "A native macOS app that finds every configured MCP (Model Context Protocol) server on your Mac — across Claude Code, Claude Desktop, Cursor, VS Code extensions and per-project files — and lists them in one window. 100% local.",
+  "offers": { "@type": "Offer", "price": "1.99", "priceCurrency": "USD" },
+  "downloadUrl": "https://apps.apple.com/app/desastre-ai-config-manager/id6778777399",
+  "author": { "@type": "Person", "name": "Thais Rodríguez Coso" },
+  "publisher": { "@type": "Organization", "name": "Desastre", "logo": { "@type": "ImageObject", "url": "https://desastre.app/assets/icon-512.png" } }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Where are MCP servers configured on a Mac?", "acceptedAnswer": { "@type": "Answer", "text": "MCP server config is spread across many files: ~/.claude.json for Claude Code, ~/Library/Application Support/Claude/claude_desktop_config.json for Claude Desktop, VS Code globalStorage for Cline, Roo Code and Continue, plus per-project .mcp.json and .cursor/mcp.json files inside every repo. There is no single place, which is why they are easy to lose track of." } },
+    { "@type": "Question", "name": "How do I see all my MCP servers at once?", "acceptedAnswer": { "@type": "Answer", "text": "Desastre scans all the known MCP config locations across 13 tools and lists every server in one window, showing which tool and project each belongs to. You can preview the raw config and reveal it on disk." } },
+    { "@type": "Question", "name": "Does Desastre upload my MCP config?", "acceptedAnswer": { "@type": "Answer", "text": "No. Everything is read locally on your Mac. Desastre never uploads files, needs no account, and has no telemetry on file contents." } },
+    { "@type": "Question", "name": "How much does it cost?", "acceptedAnswer": { "@type": "Answer", "text": "$1.99, one time, on the Mac App Store. No subscription and no account." } }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Desastre", "item": "https://desastre.app/" },
+    { "@type": "ListItem", "position": 2, "name": "Find MCP servers on Mac" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="wrap">
+  <nav class="nav" aria-label="Main">
+    <a class="brand" href="../"><img src="../assets/icon-512.png" alt="Desastre app icon" width="36" height="36"> Desastre</a>
+    <div class="links">
+      <a href="../#guides">Guides</a>
+      <a class="btn small" href="https://apps.apple.com/app/desastre-ai-config-manager/id6778777399">Get Desastre</a>
+    </div>
+  </nav>
+</header>
+
+<main class="article">
+  <p class="breadcrumb"><a href="../">Home</a> / Find MCP servers on Mac</p>
+  <h1>Find every MCP server on your Mac</h1>
+
+  <p class="byline">By Thais Rodríguez Coso · Last updated <time datetime="2026-07-09">July 9, 2026</time></p>
+
+  <div class="quick-answer">
+    <strong>Quick answer:</strong> MCP (Model Context Protocol) server config is scattered across <code>~/.claude.json</code>, Claude Desktop's <code>claude_desktop_config.json</code>, VS Code extension storage, and a <code>.mcp.json</code> inside every project you've configured. <a href="../">Desastre</a> scans all of them and lists every MCP server on your Mac in one window — which tool it belongs to, which project, and what it points at. 100% local, $1.99 once.
+  </div>
+
+  <h2>Why MCP servers are hard to track</h2>
+  <p>There is no single MCP config file. Each tool put it somewhere different:</p>
+  <table>
+    <tr><th>Tool</th><th>Where its MCP servers live</th></tr>
+    <tr><td>Claude Code</td><td><code>~/.claude.json</code> (global) + <code>.mcp.json</code> per project</td></tr>
+    <tr><td>Claude Desktop</td><td><code>~/Library/Application Support/Claude/claude_desktop_config.json</code></td></tr>
+    <tr><td>Cursor</td><td><code>~/.cursor/mcp.json</code> + <code>.cursor/mcp.json</code> per project</td></tr>
+    <tr><td>Cline / Roo Code / Continue</td><td>VS Code <code>globalStorage</code> under Application Support</td></tr>
+    <tr><td>Codex, Windsurf, Gemini, others</td><td>Each in its own tool folder or project file</td></tr>
+  </table>
+  <p>Configure a server in one tool, forget it in another, and you've no idea what's still wired up. Read the full breakdown in the <a href="../guides/mcp-config-locations/">MCP config locations guide</a>.</p>
+
+  <h2>See them all in one window</h2>
+  <p>Desastre sweeps every known MCP location across 13 tools and lists each server with the tool and project it belongs to. Preview the raw JSON, reveal it on disk, or remove a stale one.</p>
+
+  <div class="shot-inline">
+    <img src="../assets/screenshot-2.png" alt="Desastre listing every configured MCP server across tools and projects in one window" width="1280" height="800" loading="lazy">
+  </div>
+
+  <h2>Private by design</h2>
+  <p>Every scan runs on your Mac. Desastre is sandboxed and App Store-vetted, never uploads your files, and needs no account.</p>
+
+  <div class="app-cta">
+    <img class="icon" src="../assets/icon-512.png" alt="Desastre app icon" width="64" height="64">
+    <div class="body">
+      <h3>Desastre — find every MCP server on your Mac</h3>
+      <p>Every MCP server across all your AI tools, in one window. $1.99 one time.</p>
+      <a class="btn small" href="https://apps.apple.com/app/desastre-ai-config-manager/id6778777399">Download on the Mac App Store</a>
+    </div>
+  </div>
+
+  <div class="related">
+    <h2>Related</h2>
+    <ul>
+      <li><a href="../guides/mcp-config-locations/">Where is MCP server config stored? Every tool's path</a></li>
+      <li><a href="../ai-config-scanner-mac/">AI config scanner for Mac</a></li>
+      <li><a href="../guides/claude-code-config-location/">Where does Claude Code store settings, skills and agents?</a></li>
+    </ul>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap fineprint">
+    <span>© 2026 Thais Rodríguez Coso · <a href="../">Desastre</a></span>
+    <span><a href="https://thaisrc.framer.ai/desastre/privacy-policy">Privacy</a> · <a href="https://thaisrc.framer.ai/contactForm">Contact</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
