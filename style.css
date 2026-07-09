@@ -186,7 +186,8 @@ footer .fineprint { margin-top: 40px; padding-top: 20px; border-top: 1px solid v
 /* ---------- Guide pages ---------- */
 .article { max-width: 780px; margin: 0 auto; padding: 40px 24px 72px; }
 .article .breadcrumb { font-size: 14px; color: var(--ink-soft); margin-bottom: 26px; }
-.article h1 { font-size: clamp(30px, 4.4vw, 44px); margin-bottom: 18px; }
+.article h1 { font-size: clamp(30px, 4.4vw, 44px); margin-bottom: 12px; }
+.article .byline { font-size: 14px; color: var(--ink-soft); margin: 0 0 6px; }
 .article .quick-answer {
   background: var(--accent-soft); border: 1px solid #F3CDB6; border-radius: var(--radius);
   padding: 20px 24px; margin: 26px 0; font-size: 17px;

@@ -1,0 +1,45 @@
+# Desastre — AI Config Manager for Mac
+
+> Desastre is a native macOS app that scans your Mac and shows every AI tool
+> configuration file — skills, agents, rules, slash commands and MCP servers —
+> from 19 AI coding tools in one window. It reads everything locally, never
+> uploads your files, and is a one-time $1.99 purchase on the Mac App Store
+> (no subscription, no account). Built by Thais Rodríguez Coso.
+
+Desastre solves a specific problem: every AI coding tool (Claude Code, Cursor,
+GitHub Copilot, Codex, Windsurf, and more) stores its configuration in a
+different hidden location and a different format. Over time these files scatter
+across your home directory, Application Support, and every git repository you've
+opened. Desastre finds all of them and lists them in one Finder-style inventory,
+tagging each file with every tool that can read it, and can copy a config from
+one tool to another with automatic format conversion.
+
+Key facts:
+- Platform: macOS 26.0 or later. Native, sandboxed, App Store-vetted.
+- Price: $1.99, one-time. No subscription, no account, no telemetry on file contents.
+- Privacy: 100% local. Files are read in place and never uploaded. Files over 2 MB are never loaded into memory.
+- Supported tools (19): Claude Code, Claude Desktop, Cursor, Windsurf, Codex, GitHub Copilot, Aider, Amp, Antigravity, Gemini CLI, Augment Code, OpenCode, Continue.dev, Cline, Roo Code, Zed, Hermes, OpenClaw, Pi.
+- Download: https://apps.apple.com/app/desastre-ai-config-manager/id6778777399
+
+## Main pages
+
+- [Homepage](https://desastre.app/): What Desastre does, screenshots, how it works, FAQ.
+- [Pricing](https://desastre.app/pricing.md): Machine-readable pricing ($1.99 one-time).
+
+## Guides (AI tool config locations reference)
+
+- [How to find every AI config file on your Mac](https://desastre.app/guides/find-ai-config-files-mac/): Where all 19 tools hide config across dot-folders, Application Support, and repos.
+- [Where is MCP server config stored? Every tool's path](https://desastre.app/guides/mcp-config-locations/): The complete table of MCP configuration locations across 13 tools.
+- [Where does Claude Code store settings, skills and agents?](https://desastre.app/guides/claude-code-config-location/): The full map of ~/.claude/ plus ~/.claude.json for MCP servers.
+- [What is CLAUDE.md?](https://desastre.app/guides/what-is-claude-md/): Claude Code's memory file — global, project and local layers explained.
+- [What is AGENTS.md?](https://desastre.app/guides/what-is-agents-md/): The open, Linux Foundation-backed standard instruction file used in 60,000+ repos.
+- [Where does Cursor store rules?](https://desastre.app/guides/cursor-rules-location/): .cursor/rules/, the legacy .cursorrules file, and the .mdc format.
+- [How to convert Cursor rules to Claude Code](https://desastre.app/guides/convert-cursor-rules-to-claude-code/): What changes between .mdc and Claude Code's format, and one-click conversion.
+- [Where does GitHub Copilot store custom instructions?](https://desastre.app/guides/copilot-instructions-location/): copilot-instructions.md, scoped instruction files, agents and MCP config.
+- [Where does Windsurf store rules and config?](https://desastre.app/guides/windsurf-rules-location/): The two-roots quirk — ~/.windsurf/ and ~/.codeium/windsurf/.
+- [Where do Gemini CLI and Antigravity store config?](https://desastre.app/guides/gemini-cli-config-location/): GEMINI.md, ~/.gemini/, and the shared-folder conflict.
+
+## Contact
+
+- Privacy policy: https://thaisrc.framer.ai/desastre/privacy-policy
+- Contact: https://thaisrc.framer.ai/contactForm

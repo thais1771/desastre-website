@@ -22,6 +22,8 @@
   "image": "https://desastre.app/assets/screenshot-1.png",
   "author": { "@type": "Person", "name": "Thais Rodríguez Coso" },
   "publisher": { "@type": "Organization", "name": "Desastre", "logo": { "@type": "ImageObject", "url": "https://desastre.app/assets/icon-512.png" } },
+  "datePublished": "2026-07-08",
+  "dateModified": "2026-07-09",
   "mainEntityOfPage": "https://desastre.app/guides/copilot-instructions-location/"
 }
 </script>
@@ -52,6 +54,8 @@
 <main class="article">
   <p class="breadcrumb"><a href="../../">Home</a> / <a href="../../#guides">Guides</a> / Copilot instructions location</p>
   <h1>Where does GitHub Copilot store custom instructions?</h1>
+
+  <p class="byline">By Thais Rodríguez Coso · Last updated <time datetime="2026-07-09">July 9, 2026</time></p>
 
   <div class="quick-answer">
     <strong>Quick answer:</strong> Per project, Copilot reads <code>.github/copilot-instructions.md</code> at the repo root, plus scoped <code>.github/instructions/*.instructions.md</code> files. Globally, the Copilot CLI reads <code>~/.copilot/copilot-instructions.md</code>. Copilot also honors the shared <code>AGENTS.md</code> standard, keeps agents in <code>.github/agents/</code>, and stores MCP config in <code>~/.copilot/mcp-config.json</code>.
